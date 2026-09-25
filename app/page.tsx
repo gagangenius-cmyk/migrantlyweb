@@ -48,7 +48,7 @@ export default function Home() {
     <>
       <section className="home-hero">
         <div className="home-hero__media">
-          <video className="home-hero__video" autoPlay muted loop playsInline poster="/assets/logo.jpeg">
+          <video className="home-hero__video" autoPlay muted loop playsInline>
             <source src="/assets/video.mp4" type="video/mp4" />
           </video>
         </div>
