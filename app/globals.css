@@ -3009,8 +3009,10 @@ img {
 .service-card-title { font-weight: 500; }
 @media (min-width: 1200px) {
   .service-card::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(to top, rgba(var(--logo-navy-rgb), 0.82) 0%, rgba(var(--logo-navy-rgb), 0.12) 55%, rgba(var(--logo-navy-rgb), 0.25) 100%); }
-  .service-card-content { background: rgba(var(--logo-navy-rgb), 0.35); border-top: 1px solid rgba(var(--logo-gold-light-rgb), 0.35); }
-  .service-card:hover .service-card-content { background: rgba(var(--logo-navy-rgb), 0.55); }
+  .service-card-content { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .service-card:hover .service-card-content { background: transparent; }
+  .service-card-title { text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4); }
+  .service-card-tagline { color: var(--logo-gold-light); font-weight: 400; }
 }
 @media (max-width: 1199px) { .service-card-content { background: var(--logo-navy); border-top: 3px solid var(--logo-gold); } }
 
@@ -3094,3 +3096,33 @@ a.footer-link:hover { color: var(--logo-gold-light); padding-inline-start: 4px; 
 /* Mobile menu */
 .mobile-menu-nav a[aria-current="page"] { color: var(--gold-text); }
 .mobile-menu-panel { border-top: 4px solid var(--logo-gold); }
+
+/* Pathway card decoration */
+.class-item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 280px;
+  height: 280px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(var(--logo-gold-light-rgb), 0.3);
+  box-shadow: 0 0 0 40px rgba(var(--logo-gold-light-rgb), 0.05), 0 0 0 90px rgba(var(--logo-gold-light-rgb), 0.03);
+  pointer-events: none;
+  z-index: 0;
+}
+@media (max-width: 769px) { .class-item::after { display: none; } }
+
+/* Program facts inside article text keep their label/value sizing */
+.article-content .program-fact__label { margin: 0 0 6px; font-size: 11px; text-transform: uppercase; }
+.article-content .program-fact__value { margin: 0; font-size: 16px; font-weight: 500; color: var(--logo-navy); }
+
+/* Featured cards on phones: keep the image-overlay layout (image is absolutely positioned) */
+@media (max-width: 609px) {
+  .featured-item { aspect-ratio: auto; min-height: 340px; padding: 20px; }
+  .featured-item-header { position: relative; width: auto; padding: 0; }
+  .featured-item-title { font-size: 24px; max-width: 72%; }
+  .featured-item-content { margin: -20px; margin-top: auto; padding: 16px 20px; background: rgba(var(--logo-navy-rgb), 0.6); color: #fff; flex-direction: row; align-items: center; }
+  .featured-item-detail { flex-direction: column; align-items: flex-start; justify-content: flex-start; width: auto; }
+}

@@ -43,28 +43,15 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
           <div className="page-content-grid">
             <div className="article-content">
               {/* Quick facts */}
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
-                gap: '16px',
-                marginBottom: '40px',
-              }}>
-                <div style={{
-                  padding: '20px',
-                  background: 'rgba(7,27,57,0.03)',
-                  border: '1px solid var(--border)',
-                }}>
-                  <p style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', margin: '0 0 6px' }}>Country</p>
-                  <p style={{ fontSize: '16px', fontWeight: 500, color: 'var(--primary)', margin: 0 }}>{program.country}</p>
+              <div className="program-facts">
+                <div className="program-fact">
+                  <p className="program-fact__label">Country</p>
+                  <p className="program-fact__value">{program.country}</p>
                 </div>
                 {program.language && (
-                  <div style={{
-                    padding: '20px',
-                    background: 'rgba(7,27,57,0.03)',
-                    border: '1px solid var(--border)',
-                  }}>
-                    <p style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--muted)', margin: '0 0 6px' }}>Language</p>
-                    <p style={{ fontSize: '16px', fontWeight: 500, color: 'var(--primary)', margin: 0 }}>{program.language}</p>
+                  <div className="program-fact">
+                    <p className="program-fact__label">Language</p>
+                    <p className="program-fact__value">{program.language}</p>
                   </div>
                 )}
               </div>
