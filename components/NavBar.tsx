@@ -46,8 +46,6 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     { key: 'contact', href: '/contact', label: t.contact },
   ];
 
-  useEffect(() => { setOpen(null); }, [pathname]);
-
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => { if (!rootRef.current?.contains(e.target as Node)) setOpen(null); };
@@ -86,7 +84,7 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
               onMouseLeave={() => item.children && setOpen(null)}
             >
               <div className="nav-bar__row">
-                <Link href={target} className="nav-bar__link" aria-current={active ? 'page' : undefined}>{item.label}</Link>
+                <Link href={target} className="nav-bar__link" aria-current={active ? 'page' : undefined} onClick={() => setOpen(null)}>{item.label}</Link>
                 {item.children && (
                   <button
                     type="button"
