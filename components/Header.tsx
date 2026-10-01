@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { MenuIcon, CloseIcon } from './Icons';
+import NavBar from './NavBar';
 import { alternateLocalePath, localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 
 export default function Header({ lang = 'en' }: { lang?: Locale }) {
@@ -54,7 +55,7 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
             </button>
           </div>
           <Link href={localizedPath(lang, '/')} className="header-logo" aria-label={`${t.home} — Migrantly`}>
-            <Image src="/assets/logo-1.png" alt="Migrantly" width={1386} height={755} priority />
+            <img src="/assets/logo-1.png" alt="Migrantly" width={1386} height={755} fetchPriority="high" />
           </Link>
           <div className="header-right">
             <Link href={localizedPath(lang, '/contact')} className="header-btn">{t.contact}</Link>
@@ -75,6 +76,7 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
             </label>
           </div>
         </header>
+        <NavBar lang={lang} />
       </div>
 
       {menuOpen && (

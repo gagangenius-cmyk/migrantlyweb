@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
+import PopularVisa from '@/components/PopularVisa';
+import VisionMission from '@/components/VisionMission';
 import { pathways } from '@/lib/data';
 
 const news = [
@@ -181,6 +183,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PopularVisa />
+
+      <VisionMission />
 
       <section className="about-section">
         <div className="about-wrapper">

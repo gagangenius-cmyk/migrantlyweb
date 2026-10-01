@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
+import PopularVisa from '@/components/PopularVisa';
+import VisionMission from '@/components/VisionMission';
 import { pathways, news, ui } from '@/lib/data-ar';
 
 export default function ArHome() {
@@ -140,6 +142,10 @@ export default function ArHome() {
           </div>
         </div>
       </section>
+
+      <PopularVisa lang="ar" />
+
+      <VisionMission lang="ar" />
 
       <section className="about-section">
         <div className="about-wrapper">
