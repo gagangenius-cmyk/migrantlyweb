@@ -1,11 +1,11 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { MenuIcon, CloseIcon } from './Icons';
 import NavBar from './NavBar';
+import ThemeToggle from './ThemeToggle';
 import { alternateLocalePath, localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 
 export default function Header({ lang = 'en' }: { lang?: Locale }) {
@@ -50,32 +50,39 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
       <div className="header-wrapper">
         <header className="header">
           <div className="header-left">
-            <button ref={triggerRef} className="header-btn" aria-label={t.menu} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen(true)}>
+            <ThemeToggle lang={lang} />
+            <button ref={triggerRef} className="header-btn header-menu-btn" aria-label={t.menu} aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen(true)}>
               <MenuIcon /><span>{t.menu}</span>
             </button>
           </div>
           <Link href={localizedPath(lang, '/')} className="header-logo" aria-label={`${t.home} — Migrantly`}>
-            <img src="/assets/logo-1.png" alt="Migrantly" width={1386} height={755} fetchPriority="high" />
+            {/* Purpose-sized logo files (2x/3x) instead of the 1386px master, which browsers scaled down ~10x and smeared */}
+            <picture>
+              <source type="image/webp" srcSet="/assets/logo-220.webp 220w, /assets/logo-330.webp 330w, /assets/logo-440.webp 440w, /assets/logo-660.webp 660w" sizes="140px" />
+              <img src="/assets/logo-440.png" srcSet="/assets/logo-220.png 220w, /assets/logo-330.png 330w, /assets/logo-440.png 440w, /assets/logo-660.png 660w" sizes="140px" alt="Migrantly" width={440} height={244} fetchPriority="high" decoding="async" />
+            </picture>
           </Link>
           <div className="header-right">
-            <Link href={localizedPath(lang, '/contact')} className="header-btn">{t.contact}</Link>
-            <label className="header-lang-select">
-              <span className="sr-only">{lang === 'ar' ? 'اختر اللغة' : 'Choose language'}</span>
-              <select
-                value={lang}
-                onChange={(event) => {
-                  const targetLocale = event.target.value as Locale;
-                  if (targetLocale === lang) return;
-                  const suffix = `${window.location.search}${window.location.hash}`;
-                  const destination = new URL(`${alternateLocalePath(pathname, targetLocale)}${suffix}`, window.location.origin);
-                  window.location.assign(destination.toString());
-                }}
-              >
-                <option value="en">EN</option><option value="ar">AR</option>
-              </select>
-            </label>
+            <div className="lang-toggle" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
+              {(['en', 'ar'] as const).map((code) => (
+                <a
+                  key={code}
+                  href={alternateLocalePath(pathname, code)}
+                  hrefLang={code}
+                  lang={code}
+                  aria-current={code === lang ? 'true' : undefined}
+                  className={code === lang ? 'is-active' : undefined}
+                >
+                  {code.toUpperCase()}
+                </a>
+              ))}
+            </div>
           </div>
         </header>
+      </div>
+
+      {/* Outside the sticky wrapper so the nav scrolls away with the page */}
+      <div className="nav-slot">
         <NavBar lang={lang} />
       </div>
 

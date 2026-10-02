@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import BookingModal from './BookingModal';
 import { usePathname } from 'next/navigation';
-import { alternateLocalePath, localeCopy, localizedPath, type Locale } from '@/lib/site-config';
+import { localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 import { services, countries } from '@/lib/data';
 import { services as servicesAr, countries as countriesAr } from '@/lib/data-ar';
 
@@ -57,20 +57,6 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
 
   return (
     <nav ref={rootRef} className="nav-bar" aria-label={t.menu}>
-      <div className="nav-bar__lang" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
-        {(['en', 'ar'] as const).map((code) => (
-          <a
-            key={code}
-            href={alternateLocalePath(pathname, code)}
-            hrefLang={code}
-            lang={code}
-            aria-current={code === lang ? 'true' : undefined}
-            className={code === lang ? 'is-active' : undefined}
-          >
-            {code.toUpperCase()}
-          </a>
-        ))}
-      </div>
       <ul className="nav-bar__list">
         {items.map((item) => {
           const target = localizedPath(lang, item.href);

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
+import HeroSlides from '@/components/HeroSlides';
 import PopularVisa from '@/components/PopularVisa';
 import VisionMission from '@/components/VisionMission';
 import { pathways } from '@/lib/data';
@@ -50,19 +51,14 @@ export default function Home() {
     <>
       <section className="home-hero">
         <div className="home-hero__media">
-          <video className="home-hero__video" autoPlay muted loop playsInline>
-            <source src="/assets/video.mp4" type="video/mp4" />
-          </video>
+          <HeroSlides />
         </div>
 
         <div className="home-hero__desktop">
           <div className="home-hero__content">
             <div className="home-hero__headline">
-              <h1 className="home-hero__title">Your journey to a new life starts here</h1>
-              <p className="home-hero__description">
-                Guiding individuals and families through every step of the immigration process, from first consultation
-                to permanent residency.
-              </p>
+              <h1 className="home-hero__title">Your world, <span className="home-hero__accent">Unlocked</span></h1>
+              <p className="home-hero__description">Specialized in Permanent Residency, Citizenship &amp; Global Visas</p>
             </div>
 
             <div className="home-hero-search--desktop">

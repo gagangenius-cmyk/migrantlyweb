@@ -19,7 +19,7 @@ export default function Footer({ lang = 'en' }: { lang?: Locale }) {
         <div className="footer-grid footer-grid--without-newsletter">
           <div className="footer-brand">
             <Link href={localizedPath(lang, '/')} className="footer-logo" aria-label={siteConfig.name}>
-              <img src="/assets/logo-1.png" alt={siteConfig.name} width={1386} height={755} loading="lazy" />
+              <img src="/assets/logo-330.png" srcSet="/assets/logo-220.png 220w, /assets/logo-330.png 330w, /assets/logo-440.png 440w, /assets/logo-660.png 660w" sizes="102px" alt={siteConfig.name} width={330} height={183} loading="lazy" decoding="async" />
             </Link>
             <p className="footer-link">{ar ? 'معلومات واضحة حول مسارات الهجرة ودعم شخصي لخطوتك التالية.' : 'Clear immigration pathway information and personal support for your next step.'}</p>
             {emailUrl && <a className="footer-contact-link" href={emailUrl}>{siteConfig.publicContact.email}</a>}

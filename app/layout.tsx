@@ -21,7 +21,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const requestHeaders = await headers();
   const locale: Locale = requestHeaders.get('x-site-locale') === 'ar' ? 'ar' : 'en';
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} className={`${inter.variable} ${kufi.variable}`}>
+    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} className={`${inter.variable} ${kufi.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Apply the saved theme before first paint so there is no light flash in dark mode. Defaults to light. */}
+        <script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.dataset.theme=localStorage.getItem('theme')==='dark'?'dark':'light'}catch(e){document.documentElement.dataset.theme='light'}" }} />
+      </head>
       <body>
         <a className="skip-link" href="#main-content">{locale === 'ar' ? 'انتقل إلى المحتوى' : 'Skip to content'}</a>
         <Header lang={locale} />

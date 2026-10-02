@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
+import HeroSlides from '@/components/HeroSlides';
 import PopularVisa from '@/components/PopularVisa';
 import VisionMission from '@/components/VisionMission';
 import { pathways, news, ui } from '@/lib/data-ar';
@@ -18,16 +19,14 @@ export default function ArHome() {
     <>
       <section className="home-hero">
         <div className="home-hero__media">
-          <video className="home-hero__video" autoPlay muted loop playsInline poster="/assets/logo.jpeg">
-            <source src="/assets/video.mp4" type="video/mp4" />
-          </video>
+          <HeroSlides lang="ar" />
         </div>
 
         <div className="home-hero__desktop">
           <div className="home-hero__content">
             <div className="home-hero__headline">
-              <h1 className="home-hero__title">{ui.home.heroTitle}</h1>
-              <p className="home-hero__description">{ui.home.heroDescription}</p>
+              <h1 className="home-hero__title">عالمك، <span className="home-hero__accent">مفتوح</span></h1>
+              <p className="home-hero__description">متخصصون في الإقامة الدائمة والجنسية والتأشيرات العالمية</p>
             </div>
 
             <div className="home-hero-search--desktop">
