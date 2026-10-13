@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { countries, news, programs, services } from '@/lib/data';
+import { tools } from '@/lib/tools/registry';
 import { siteConfig } from '@/lib/site-config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,7 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((item) => `/services/${item.slug}`),
     ...news.map((item) => `/news/${item.slug}`),
   ];
-  return routes.flatMap((route) => {
+  const englishOnly = ['/tools', ...tools.map((item) => `/tools/${item.slug}`)].map((route) => ({ url: `${siteConfig.url}${route}`, changeFrequency: 'monthly' as const }));
+  return [...englishOnly, ...routes.flatMap((route) => {
     const english = `${siteConfig.url}${route || '/'}`;
     const arabic = `${siteConfig.url}/ar${route}`;
     const languages = { en: english, ar: arabic };
@@ -19,5 +21,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: english, alternates: { languages }, changeFrequency: 'weekly' as const },
       { url: arabic, alternates: { languages }, changeFrequency: 'weekly' as const },
     ];
-  });
+  })];
 }

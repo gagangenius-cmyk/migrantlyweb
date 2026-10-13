@@ -17,7 +17,7 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
   const alternateLocale: Locale = lang === 'ar' ? 'en' : 'ar';
   const links = [
     ['home', '/'], ['services', '/services'], ['countries', '/countries'],
-    ['programs', '/programs'], ['about', '/about'], ['news', '/news'], ['contact', '/contact'],
+    ['programs', '/programs'], ['tools', '/tools'], ['about', '/about'], ['news', '/news'], ['contact', '/contact'],
   ] as const;
 
   const closeMenu = () => {
@@ -92,7 +92,7 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
             <button className="mobile-menu-close" onClick={closeMenu} aria-label={t.closeMenu}><CloseIcon /></button>
             <nav className="mobile-menu-nav" aria-label={t.menu}>
               {links.map(([key, href]) => {
-                const target = localizedPath(lang, href);
+                const target = href === '/tools' ? href : localizedPath(lang, href);
                 const active = pathname === target || (href !== '/' && pathname.startsWith(`${target}/`));
                 return <Link key={key} href={target} aria-current={active ? 'page' : undefined} onClick={closeMenu}>{t[key]}</Link>;
               })}

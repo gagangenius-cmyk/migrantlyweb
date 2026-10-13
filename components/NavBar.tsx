@@ -6,6 +6,7 @@ import BookingModal from './BookingModal';
 import { usePathname } from 'next/navigation';
 import { localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 import { services, countries } from '@/lib/data';
+import { tools } from '@/lib/tools/registry';
 import { services as servicesAr, countries as countriesAr } from '@/lib/data-ar';
 
 // Demo number until the real line is added to siteConfig.publicContact.phone
@@ -16,7 +17,7 @@ const ctaCopy = {
   ar: { book: 'احجز استشارة', call: 'تواصل خلال دقيقتين' },
 } as const;
 
-type Item ={ key: string; href: string; label: string; children?: { href: string; label: string }[] };
+type Item ={ key: string; href: string; label: string; children?: { href: string; label: string }[]; localized?: boolean };
 
 export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
   const pathname = usePathname();
@@ -41,6 +42,10 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
       children: countryList.map((c) => ({ href: `/countries/${c.slug}`, label: c.name })),
     },
     { key: 'programs', href: '/programs', label: t.programs },
+    {
+      key: 'tools', href: '/tools', label: t.tools, localized: false,
+      children: tools.map((tool) => ({ href: `/tools/${tool.slug}`, label: tool.name })),
+    },
     { key: 'about', href: '/about', label: t.about },
     { key: 'news', href: '/news', label: t.news },
     { key: 'contact', href: '/contact', label: t.contact },
@@ -59,7 +64,7 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     <nav ref={rootRef} className="nav-bar" aria-label={t.menu}>
       <ul className="nav-bar__list">
         {items.map((item) => {
-          const target = localizedPath(lang, item.href);
+          const target = item.localized === false ? item.href : localizedPath(lang, item.href);
           const active = item.href === '/' ? pathname === target : pathname === target || pathname.startsWith(`${target}/`);
           const isOpen = open === item.key;
           return (
@@ -87,7 +92,7 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
                 <ul className="nav-bar__dropdown">
                   {item.children.map((child) => (
                     <li key={child.href}>
-                      <Link href={localizedPath(lang, child.href)} onClick={() => setOpen(null)}>{child.label}</Link>
+                      <Link href={item.localized === false ? child.href : localizedPath(lang, child.href)} onClick={() => setOpen(null)}>{child.label}</Link>
                     </li>
                   ))}
                   <li className="nav-bar__dropdown-all">
