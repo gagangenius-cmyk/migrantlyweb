@@ -1,6 +1,7 @@
 import type { ToolDefinition } from './types';
 import { australiaPoints } from './australia-points';
 import { canadaCrs } from './canada-crs';
+import { canadaFsw } from './canada-fsw';
 import { ieltsClb } from './ielts-clb';
 import { ukSkilledWorker } from './uk-skilled-worker';
 
@@ -10,6 +11,12 @@ export const tools: ToolDefinition[] = [
     summary: 'Estimate your Express Entry score out of 1,200, with spouse, language, work experience and provincial nomination points.',
     officialUrl: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/check-score.html',
     calculator: canadaCrs,
+  },
+  {
+    slug: 'canada-pr-calculator', name: 'Canada PR Calculator (FSW 67-Point Grid)', country: 'Canada', system: 'Federal Skilled Worker Program selection grid',
+    summary: 'Check whether you reach the 67 points needed to qualify for Canada permanent residence under the Federal Skilled Worker Program.',
+    officialUrl: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/federal-skilled-workers/six-selection-factors-federal-skilled-workers.html',
+    calculator: canadaFsw,
   },
   {
     slug: 'australia-points-test', name: 'Australia Skilled Migration Points Calculator', country: 'Australia', system: 'General Skilled Migration points test (189 / 190 / 491)',
@@ -32,3 +39,9 @@ export const tools: ToolDefinition[] = [
 ];
 
 export const getTool = (slug: string) => tools.find((tool) => tool.slug === slug);
+
+/** Every page in the Tools section, including pages that are not calculators. */
+export const toolLinks = [
+  ...tools.map(({ slug, name, country, summary }) => ({ slug, name, country, summary })),
+  { slug: 'express-entry-draws', name: 'Express Entry Draws', country: 'Canada', summary: 'Recent Express Entry rounds with cut-off scores. Compare your CRS score with each draw.' },
+];

@@ -6,7 +6,8 @@ import BookingModal from './BookingModal';
 import { usePathname } from 'next/navigation';
 import { localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 import { services, countries } from '@/lib/data';
-import { tools } from '@/lib/tools/registry';
+import { toolLinks } from '@/lib/tools/registry';
+import { servicePages } from '@/lib/service-pages';
 import { services as servicesAr, countries as countriesAr } from '@/lib/data-ar';
 
 // Demo number until the real line is added to siteConfig.publicContact.phone
@@ -35,7 +36,10 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     { key: 'home', href: '/', label: t.home },
     {
       key: 'services', href: '/services', label: t.services,
-      children: serviceList.map((s) => ({ href: `/services/${s.slug}`, label: s.title })),
+      children: [
+        ...serviceList.map((s) => ({ href: `/services/${s.slug}`, label: s.title })),
+        ...(lang === 'en' ? servicePages.map((s) => ({ href: `/services/${s.slug}`, label: s.title })) : []),
+      ],
     },
     {
       key: 'countries', href: '/countries', label: t.countries,
@@ -44,9 +48,16 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     { key: 'programs', href: '/programs', label: t.programs },
     {
       key: 'tools', href: '/tools', label: t.tools, localized: false,
-      children: tools.map((tool) => ({ href: `/tools/${tool.slug}`, label: tool.name })),
+      children: toolLinks.map((tool) => ({ href: `/tools/${tool.slug}`, label: tool.name })),
     },
-    { key: 'about', href: '/about', label: t.about },
+    {
+      key: 'about', href: '/about', label: t.about,
+      children: [
+        { href: '/about/vision', label: lang === 'ar' ? 'رؤيتنا' : 'Vision' },
+        { href: '/about/mission', label: lang === 'ar' ? 'مهمتنا' : 'Mission' },
+        { href: '/about/values', label: lang === 'ar' ? 'قيمنا' : 'Values' },
+      ],
+    },
     { key: 'news', href: '/news', label: t.news },
     { key: 'contact', href: '/contact', label: t.contact },
   ];

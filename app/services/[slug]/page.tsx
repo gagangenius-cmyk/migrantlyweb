@@ -3,19 +3,35 @@ import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
 import { services } from '@/lib/data';
 import { ArrowIcon } from '@/components/Icons';
+import ServicePageView from '@/components/ServicePageView';
+import { getServicePage, servicePages } from '@/lib/service-pages';
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return [...services, ...servicePages].map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const page = getServicePage(slug);
+  if (page) {
+    const path = `/services/${page.slug}`;
+    return {
+      title: page.metaTitle,
+      description: page.metaDescription,
+      keywords: page.keywords,
+      alternates: { canonical: path },
+      openGraph: { type: 'website', title: page.metaTitle, description: page.metaDescription, url: path, images: [{ url: page.image }] },
+      twitter: { card: 'summary_large_image', title: page.metaTitle, description: page.metaDescription },
+    };
+  }
   const service = services.find((s) => s.slug === slug);
   return { title: `${service?.title || 'Service'} — Migrantly` };
 }
 
 export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const extra = getServicePage(slug);
+  if (extra) return <ServicePageView page={extra} />;
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 

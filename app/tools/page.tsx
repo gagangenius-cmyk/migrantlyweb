@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import { ArrowIcon } from '@/components/Icons';
-import { tools } from '@/lib/tools/registry';
+import { toolLinks } from '@/lib/tools/registry';
 
 export const metadata = {
   title: 'Immigration Tools & Points Calculators',
-  description: 'Free immigration points calculators for Canada, Australia and the UK, plus an IELTS to CLB converter.',
+  description: 'Free immigration points calculators for Canada, Australia and the UK, Express Entry draw results and an IELTS to CLB converter.',
 };
 
 export default function ToolsPage() {
@@ -20,12 +20,12 @@ export default function ToolsPage() {
       <section className="page-content">
         <div className="container">
           <div className="tool-grid">
-            {tools.map((tool) => (
+            {toolLinks.map((tool) => (
               <Link key={tool.slug} href={`/tools/${tool.slug}`} className="tool-card">
                 <span className="tool-card__country">{tool.country}</span>
                 <h2>{tool.name}</h2>
                 <p>{tool.summary}</p>
-                <span className="tool-card__go">Open calculator <ArrowIcon /></span>
+                <span className="tool-card__go">Open tool <ArrowIcon /></span>
               </Link>
             ))}
           </div>
