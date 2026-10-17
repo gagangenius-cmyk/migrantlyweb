@@ -1,72 +1,49 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { countries } from '@/lib/data';
 import { countries as countriesAr } from '@/lib/data-ar';
 import { localizedPath, type Locale } from '@/lib/site-config';
 
 const copy = {
-  en: { title: 'Popular Visa', text: 'Explore the destinations our clients choose most, and the visa routes we guide them through.', viewCountry: 'View country', flip: 'Show visa options for' },
-  ar: { title: 'التأشيرات الأكثر طلباً', text: 'اكتشف الوجهات الأكثر اختياراً لدى عملائنا ومسارات التأشيرات التي نرشدهم خلالها.', viewCountry: 'عرض الدولة', flip: 'عرض خيارات التأشيرة لـ' },
+  en: { label: 'Destinations', title: 'Popular Visa Destinations', readMore: 'Read more' },
+  ar: { label: 'الوجهات', title: 'وجهات التأشيرات الأكثر طلباً', readMore: 'اقرأ المزيد' },
 } as const;
 
+const codes: Record<string, string> = { canada: 'CA', australia: 'AU', 'united-kingdom': 'UK', 'united-states': 'US', 'european-union': 'EU', portugal: 'PT' };
+
 export default function PopularVisa({ lang = 'en' }: { lang?: Locale }) {
-  const [flipped, setFlipped] = useState<string | null>(null);
   const t = copy[lang];
   const list = lang === 'ar' ? countriesAr : countries;
 
   return (
-    <section className="popular-visa">
+    <section className="dest">
       <div className="container">
-        <div className="popular-visa__panel">
-          <div className="popular-visa__intro">
-            <p className="section-label">{lang === 'ar' ? 'الوجهات' : 'Destinations'}</p>
-            <h2 className="section-title">{t.title}</h2>
-            <p className="popular-visa__text">{t.text}</p>
-          </div>
-
-          <div className="popular-visa__grid">
-            {list.map((country) => {
-              const isFlipped = flipped === country.slug;
-              const countryHref = localizedPath(lang, `/countries/${country.slug}`);
-              const programsHref = country.slug === 'european-union' ? countryHref : localizedPath(lang, `/programs?destination=${country.slug}`);
-              return (
-                <div key={country.slug} className={`flip-card${isFlipped ? ' is-flipped' : ''}`} onMouseLeave={() => setFlipped(null)}>
-                  <div className="flip-card__inner">
-                    <button
-                      type="button"
-                      className="flip-card__front"
-                      aria-expanded={isFlipped}
-                      aria-label={`${t.flip} ${country.name}`}
-                      onClick={() => setFlipped(isFlipped ? null : country.slug)}
-                    >
-                      <Image src={country.image} alt="" fill sizes="(max-width: 769px) 50vw, 20vw" className="flip-card__image" />
-                      <span className="flip-card__bar" aria-hidden="true" />
-                      <span className="flip-card__name">{country.name}</span>
-                    </button>
-
-                    <div className="flip-card__back" aria-hidden={!isFlipped}>
-                      <h3 className="flip-card__title"><Link href={countryHref} tabIndex={isFlipped ? 0 : -1}>{country.name}</Link></h3>
-                      <ul className="flip-card__list">
-                        {country.programs.map((program) => (
-                          <li key={program}>
-                            <Link href={programsHref} tabIndex={isFlipped ? 0 : -1}>
-                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
-                              <span>{program}</span>
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                      <Link href={countryHref} className="flip-card__more" tabIndex={isFlipped ? 0 : -1}>{t.viewCountry}</Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <p className="section-label">{t.label}</p>
+        <h2 className="section-title">{t.title}</h2>
+      </div>
+      <div className="dest__grid">
+        {list.map((country, index) => {
+          const row = Math.floor(index / 2) + 1;
+          const textFirst = row % 2 === 1;
+          const slot = (index % 2) * 2 + 1;
+          const style = { '--r': row, '--ct': textFirst ? slot : slot + 1, '--ci': textFirst ? slot + 1 : slot } as CSSProperties;
+          const href = localizedPath(lang, `/countries/${country.slug}`);
+          return (
+            <div className="dest__pair" key={country.slug}>
+              <Link href={href} className="dest__tile dest__text" style={style}>
+                <span className="dest__number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+                <span className="dest__badge" aria-hidden="true">{codes[country.slug] ?? country.name.slice(0, 2).toUpperCase()}</span>
+                <h3>{country.name}</h3>
+                <p>{country.tagline}</p>
+                <span className="dest__more">{t.readMore}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3l16 9-16 9z" /></svg></span>
+              </Link>
+              <Link href={href} className="dest__tile dest__photo" style={style} tabIndex={-1} aria-hidden="true">
+                <Image src={country.image} alt="" fill sizes="(max-width: 700px) 100vw, 25vw" />
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

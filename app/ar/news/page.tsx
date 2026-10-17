@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
@@ -57,13 +58,7 @@ export default function ArNewsPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>هل تحتاج إلى مساعدة في اختيار الخدمة؟</h2>
-          <p>تواصل مع فريقنا للحصول على نظرة واضحة حول الخدمات المتاحة عبر هذا الموقع.</p>
-          <Link href="/ar/contact" className="btn btn-primary">تواصل معنا <ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="ar" />
     </>
   );
 }

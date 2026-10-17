@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
@@ -90,13 +91,7 @@ export default function NewsPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Need help finding the right service?</h2>
-          <p>Contact our team for a clear overview of the services available through this website.</p>
-          <Link href="/contact" className="btn btn-primary">Contact us <ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

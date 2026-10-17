@@ -4,6 +4,7 @@ import PageHero from '@/components/PageHero';
 import PointsCalculator from '@/components/tools/PointsCalculator';
 import { ArrowIcon } from '@/components/Icons';
 import { getTool, tools } from '@/lib/tools/registry';
+import LeadSection from '@/components/LeadSection';
 
 export function generateStaticParams() {
   return tools.map((tool) => ({ slug: tool.slug }));
@@ -35,13 +36,7 @@ export default async function ToolPage({ params }: { params: Promise<{ slug: str
           </p>
         </div>
       </section>
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Want an expert to review your score?</h2>
-          <p>Book a free consultation and we will check your eligibility and the best route for your profile.</p>
-          <Link href="/contact" className="btn btn-primary">Book a consultation<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

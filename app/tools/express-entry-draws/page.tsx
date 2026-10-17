@@ -3,6 +3,7 @@ import PageHero from '@/components/PageHero';
 import DrawTable from '@/components/tools/DrawTable';
 import { ArrowIcon } from '@/components/Icons';
 import { draws, drawsSource } from '@/lib/express-entry-draws';
+import LeadSection from '@/components/LeadSection';
 
 export const metadata = {
   title: 'Express Entry Draws — Latest CRS Cut-offs',
@@ -39,13 +40,7 @@ export default function ExpressEntryDrawsPage() {
           </p>
         </div>
       </section>
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Not sure how to raise your score?</h2>
-          <p>Our team can review your profile and suggest realistic ways to improve it.</p>
-          <Link href="/contact" className="btn btn-primary">Book a consultation<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

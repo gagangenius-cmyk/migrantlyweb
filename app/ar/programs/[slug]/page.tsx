@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
@@ -145,13 +146,7 @@ export default async function ArProgramDetailPage({ params }: { params: Promise<
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>جاهز للتقديم على {program.name}؟</h2>
-          <p>أرسل استفسارك حول {program.name} وتحقق من المتطلبات الحالية قبل التقديم.</p>
-          <Link href="/ar/contact" className="btn btn-primary">احجز استشارة<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="ar" />
     </>
   );
 }

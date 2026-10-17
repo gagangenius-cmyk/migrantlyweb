@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
@@ -56,13 +57,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Not sure which service is right for you?</h2>
-          <p>Book a free consultation and our immigration experts will guide you to the best pathway for your situation.</p>
-          <Link href="/contact" className="btn btn-primary">Book a consultation<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

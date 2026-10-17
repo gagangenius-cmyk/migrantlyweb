@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
@@ -35,13 +36,7 @@ export default function ArCountriesPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>جاهز لاستكشاف خياراتك؟</h2>
-          <p>تواصل معنا لمناقشة فئات الخدمات المتاحة لوجهتك المختارة.</p>
-          <Link href="/ar/contact" className="btn btn-primary">احجز استشارة<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="ar" />
     </>
   );
 }

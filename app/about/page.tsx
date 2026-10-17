@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import { ArrowIcon } from '@/components/Icons';
@@ -70,13 +71,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Let&apos;s build your future together</h2>
-          <p>Book a free consultation and discover how we can turn your immigration goals into reality.</p>
-          <Link href="/contact" className="btn btn-primary">Get started<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

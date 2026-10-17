@@ -2,6 +2,7 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import { ArrowIcon } from '@/components/Icons';
 import { localizedPath, siteConfig, type Locale } from '@/lib/site-config';
+import LeadSection from '@/components/LeadSection';
 
 export type Pillar = 'vision' | 'mission' | 'values';
 
@@ -182,13 +183,7 @@ export default function AboutPillarPage({ lang, pillar }: { lang: Locale; pillar
           </div>
         </div>
       </section>
-      <section className="cta-banner">
-        <div className="container">
-          <h2>{t.cta}</h2>
-          <p>{t.ctaText}</p>
-          <Link href={localizedPath(lang, '/contact')} className="btn btn-primary">{t.book}<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

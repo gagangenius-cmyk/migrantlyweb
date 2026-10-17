@@ -6,10 +6,12 @@ import { usePathname } from 'next/navigation';
 import { MenuIcon, CloseIcon } from './Icons';
 import NavBar from './NavBar';
 import ThemeToggle from './ThemeToggle';
-import { alternateLocalePath, localeCopy, localizedPath, type Locale } from '@/lib/site-config';
+import SocialLinks from './SocialLinks';
+import { alternateLocalePath, localeCopy, localizedPath, siteConfig, type Locale } from '@/lib/site-config';
 
 export default function Header({ lang = 'en' }: { lang?: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
   const pathname = usePathname();
   const triggerRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -24,6 +26,14 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
     setMenuOpen(false);
     requestAnimationFrame(() => triggerRef.current?.focus());
   };
+
+  // Switch to the compact white bar once the page is scrolled
+  useEffect(() => {
+    const onScroll = () => setStuck(window.scrollY > 60);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -56,11 +66,10 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
             </button>
           </div>
           <Link href={localizedPath(lang, '/')} className="header-logo" aria-label={`${t.home} — Migrantly`}>
-            {/* Purpose-sized logo files (2x/3x) instead of the 1386px master, which browsers scaled down ~10x and smeared */}
-            <picture>
-              <source type="image/webp" srcSet="/assets/logo-220.webp 220w, /assets/logo-330.webp 330w, /assets/logo-440.webp 440w, /assets/logo-660.webp 660w" sizes="140px" />
-              <img src="/assets/logo-440.png" srcSet="/assets/logo-220.png 220w, /assets/logo-330.png 330w, /assets/logo-440.png 440w, /assets/logo-660.png 660w" sizes="140px" alt="Migrantly" width={440} height={244} fetchPriority="high" decoding="async" />
-            </picture>
+            <span className="logo-pair">
+              <img className="logo-img logo-img--light" src="/assets/logo-light-330.png" srcSet="/assets/logo-light-220.png 220w, /assets/logo-light-330.png 330w, /assets/logo-light-440.png 440w, /assets/logo-light-660.png 660w" sizes="140px" alt="Migrantly" width={330} height={167} fetchPriority="high" decoding="async" />
+              <img className="logo-img logo-img--dark" src="/assets/logo-dark-330.png" srcSet="/assets/logo-dark-220.png 220w, /assets/logo-dark-330.png 330w, /assets/logo-dark-440.png 440w, /assets/logo-dark-660.png 660w" sizes="140px" alt="" aria-hidden="true" width={330} height={165} decoding="async" />
+            </span>
           </Link>
           <div className="header-right">
             <div className="lang-toggle" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
@@ -79,11 +88,43 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
             </div>
           </div>
         </header>
-      </div>
 
-      {/* Outside the sticky wrapper so the nav scrolls away with the page */}
-      <div className="nav-slot">
-        <NavBar lang={lang} />
+        <div className={`site-header${stuck ? ' is-stuck' : ''}`}>
+          <Link href={localizedPath(lang, '/')} className="site-header__logo" aria-label={`${t.home} — Migrantly`}>
+            <span className="logo-pair">
+              <img className="logo-img logo-img--light" src="/assets/logo-light-330.png" srcSet="/assets/logo-light-220.png 220w, /assets/logo-light-330.png 330w, /assets/logo-light-440.png 440w, /assets/logo-light-660.png 660w" sizes="170px" alt="Migrantly" width={330} height={167} decoding="async" />
+              <img className="logo-img logo-img--dark" src="/assets/logo-dark-330.png" srcSet="/assets/logo-dark-220.png 220w, /assets/logo-dark-330.png 330w, /assets/logo-dark-440.png 440w, /assets/logo-dark-660.png 660w" sizes="170px" alt="" aria-hidden="true" width={330} height={165} decoding="async" />
+            </span>
+          </Link>
+          <div className="site-header__body">
+            <div className="site-header__top">
+              <div className="site-header__info">
+                {siteConfig.publicContact.email && (
+                  <a href={`mailto:${siteConfig.publicContact.email}`}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+                    <span>{siteConfig.publicContact.email}</span>
+                  </a>
+                )}
+              </div>
+              <div className="site-header__tools">
+                <div className="site-header__links">
+                  <Link href={localizedPath(lang, '/contact')}>{t.contact}</Link>
+                  <Link href="/tools">{t.tools}</Link>
+                  <Link href={localizedPath(lang, '/news')}>{t.news}</Link>
+                </div>
+                <div className="site-header__langs" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
+                  <a href={alternateLocalePath(pathname, 'en')} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} className={lang === 'en' ? 'is-active' : undefined}>English</a>
+                  <a href={alternateLocalePath(pathname, 'ar')} hrefLang="ar" lang="ar" aria-current={lang === 'ar' ? 'true' : undefined} className={lang === 'ar' ? 'is-active' : undefined}>العربية</a>
+                </div>
+                <ThemeToggle lang={lang} />
+                <SocialLinks lang={lang} className="site-header__social" />
+              </div>
+            </div>
+            <div className="site-header__main">
+              <NavBar lang={lang} />
+            </div>
+          </div>
+        </div>
       </div>
 
       {menuOpen && (

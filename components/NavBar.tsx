@@ -115,15 +115,18 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
           );
         })}
       </ul>
-      <div className="nav-bar__cta">
-        <button type="button" className="nav-bar__btn nav-bar__btn--solid" onClick={() => setBookingOpen(true)}>
-          {cta.book}
-        </button>
-        <a className="nav-bar__btn nav-bar__btn--outline" href={`tel:${DEMO_CALL_NUMBER.replace(/\s/g, '')}`} aria-label={`${cta.call}: ${DEMO_CALL_NUMBER}`}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
-          <span>{cta.call}</span>
-        </a>
-      </div>
+      <a className="nav-bar__call" href={`tel:${DEMO_CALL_NUMBER.replace(/\s/g, '')}`} aria-label={`${cta.call}: ${DEMO_CALL_NUMBER}`}>
+        <span className="nav-bar__call-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
+        </span>
+        <span className="nav-bar__call-text">
+          <small>{cta.call}</small>
+          <strong dir="ltr">{DEMO_CALL_NUMBER}</strong>
+        </span>
+      </a>
+      <button type="button" className="nav-bar__book" onClick={() => setBookingOpen(true)}>
+        {cta.book}
+      </button>
       <BookingModal open={bookingOpen} onClose={closeBooking} lang={lang} />
     </nav>
   );

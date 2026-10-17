@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
@@ -146,13 +147,7 @@ export default async function ProgramDetailPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Ready to apply for {program.name}?</h2>
-          <p>Book a free consultation and our specialists will assess your eligibility and guide you through the process.</p>
-          <Link href="/contact" className="btn btn-primary">Book a consultation <ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

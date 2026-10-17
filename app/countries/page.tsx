@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageHero from '@/components/PageHero';
@@ -35,13 +36,7 @@ export default function CountriesPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Don&apos;t see your destination?</h2>
-          <p>Contact us to discuss your target destination and the services currently available.</p>
-          <Link href="/contact" className="btn btn-primary">Ask about your country<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

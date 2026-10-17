@@ -4,6 +4,7 @@ import { ArrowIcon, CheckIcon } from '@/components/Icons';
 import { services } from '@/lib/data';
 import { servicePages, type ServicePage } from '@/lib/service-pages';
 import { siteConfig } from '@/lib/site-config';
+import LeadSection from '@/components/LeadSection';
 
 const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
 
@@ -104,13 +105,7 @@ export default function ServicePageView({ page }: { page: ServicePage }) {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Ready to begin your journey?</h2>
-          <p>Schedule a free consultation about {page.title.toLowerCase()} with a Migrantly specialist.</p>
-          <Link href="/contact" className="btn btn-primary">Book a consultation<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

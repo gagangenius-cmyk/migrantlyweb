@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
@@ -112,13 +113,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>Stay ahead of policy changes</h2>
-          <p>Contact us if you need help locating the relevant official source or service category.</p>
-          <Link href="/contact" className="btn btn-primary">Contact us <ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="en" />
     </>
   );
 }

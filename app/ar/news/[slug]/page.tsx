@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
@@ -90,13 +91,7 @@ export default async function ArNewsArticlePage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>ابقَ في طليعة تغييرات السياسة</h2>
-          <p>تواصل معنا إذا كنت بحاجة إلى المساعدة في الوصول إلى المصدر الرسمي أو فئة الخدمة المناسبة.</p>
-          <Link href="/ar/contact" className="btn btn-primary">تواصل معنا <ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="ar" />
     </>
   );
 }

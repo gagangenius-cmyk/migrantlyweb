@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import { ArrowIcon } from '@/components/Icons';
@@ -67,13 +68,7 @@ export default function ArAboutPage() {
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>لنبن مستقبلك معاً</h2>
-          <p>تواصل معنا لمناقشة أهدافك ومعرفة فئات الخدمات المتاحة.</p>
-          <Link href="/ar/contact" className="btn btn-primary">ابدأ الآن<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="ar" />
     </>
   );
 }

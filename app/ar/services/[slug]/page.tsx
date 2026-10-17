@@ -1,3 +1,4 @@
+import LeadSection from '@/components/LeadSection';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import PageHero from '@/components/PageHero';
@@ -79,13 +80,7 @@ export default async function ArServiceDetailPage({ params }: { params: Promise<
         </div>
       </section>
 
-      <section className="cta-banner">
-        <div className="container">
-          <h2>جاهز لبدء رحلتك؟</h2>
-          <p>تواصل معنا للاستفسار عن خدمة {service.title}.</p>
-          <Link href="/ar/contact" className="btn btn-primary">احجز استشارة<ArrowIcon /></Link>
-        </div>
-      </section>
+      <LeadSection lang="ar" />
     </>
   );
 }
