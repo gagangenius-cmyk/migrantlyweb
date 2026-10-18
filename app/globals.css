@@ -3771,3 +3771,32 @@ h1, h2, h3, h4, h5, h6 { color: var(--heading); }
 .vmv-card h3, .vmv-card p, .vmv-card li, .vmv-card__number { transition: color 0.2s ease 0.3s; }
 .vmv-card:not(:hover):not(:focus-visible) h3, .vmv-card:not(:hover):not(:focus-visible) p, .vmv-card:not(:hover):not(:focus-visible) li { transition-delay: 0.2s; }
 .dest__number, .dest__text h3, .dest__text p, .dest__more { transition: color 0.2s ease 0.2s; }
+
+/* Header fit: never let the links collide with the call block / Book button */
+@media (min-width: 1025px) {
+  .site-header__main .nav-bar__list { flex: 1 1 auto; min-width: 0; }
+  .nav-bar__call, .nav-bar__book { flex: none; }
+  .site-header__main .nav-bar__link { padding: 0 10px; font-size: 14px; }
+  .site-header__main .nav-bar__link::after { left: 10px; right: 10px; }
+  .site-header__main .has-menu .nav-bar__link::after { right: 2px; }
+  .site-header__main .nav-bar__toggle { padding: 0 8px 0 0; }
+}
+@media (min-width: 1025px) and (max-width: 1439px) {
+  .site-header__logo { width: 200px; padding: 12px 20px; }
+  .nav-bar__call-text { display: none; }
+  .nav-bar__call { padding: 0 12px; }
+  .nav-bar__book { width: 130px; font-size: 12px; }
+}
+@media (min-width: 1025px) and (max-width: 1199px) {
+  .site-header__logo { width: 170px; padding: 12px 16px; }
+  .site-header__main .nav-bar__link { padding: 0 7px; font-size: 13px; }
+  .site-header__main .nav-bar__link::after { left: 7px; right: 7px; }
+  .site-header__main .nav-bar { padding-inline-start: 6px; }
+  .nav-bar__book { width: 104px; font-size: 11px; letter-spacing: 0.04em; }
+  .site-header__top { padding: 0 16px; }
+  .site-header__links { display: none; }
+}
+
+/* Footer logo: the light-text logo sits directly on the navy footer (no white box) */
+.footer-logo { padding: 0; background: transparent; border-radius: 0; margin: 0 0 18px; }
+.footer-logo img { height: auto; width: 190px; max-width: 100%; }
