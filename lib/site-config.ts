@@ -5,7 +5,7 @@ export const siteConfig = {
   name: 'Migrantly',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
   publicContact: {
-    email: 'info@migrantly.com' as string | null,
+    email: 'info@migrantly.ae' as string | null,
     phone: null as string | null,
     whatsapp: null as string | null,
     social: { facebook: null, instagram: null, linkedin: null, x: null } satisfies Record<SocialNetwork, string | null>,

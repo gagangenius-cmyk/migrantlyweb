@@ -78,7 +78,7 @@ export default function LeadSection({ lang = 'en' }: { lang?: Locale }) {
   }
 
   return (
-    <section className="lead">
+    <section className="lead" id="consultation">
       <div className="container">
         <div className="lead__grid">
           <div className="lead__visual" aria-hidden="true">

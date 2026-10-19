@@ -11,5 +11,5 @@ describe('localized navigation', () => {
     expect(alternateLocalePath('/ar', 'en')).toBe('/');
     expect(alternateLocalePath('/programs?destination=canada', 'ar')).toBe('/ar/programs');
   });
-  it('builds a public email link', () => expect(buildEmailUrl('en')).toContain('mailto:info@migrantly.com'));
+  it('builds a public email link', () => expect(buildEmailUrl('en')).toContain('mailto:info@migrantly.ae'));
 });

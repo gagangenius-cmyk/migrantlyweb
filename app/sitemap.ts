@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...services.map((item) => `/services/${item.slug}`),
     ...news.map((item) => `/news/${item.slug}`),
   ];
-  const englishOnly = ['/tools', ...servicePages.map((item) => `/services/${item.slug}`), ...toolLinks.map((item) => `/tools/${item.slug}`)].map((route) => ({ url: `${siteConfig.url}${route}`, changeFrequency: 'monthly' as const }));
+  const englishOnly = ['/free-assessment', '/tools', ...servicePages.map((item) => `/services/${item.slug}`), ...toolLinks.map((item) => `/tools/${item.slug}`)].map((route) => ({ url: `${siteConfig.url}${route}`, changeFrequency: 'monthly' as const }));
   return [...englishOnly, ...routes.flatMap((route) => {
     const english = `${siteConfig.url}${route || '/'}`;
     const arabic = `${siteConfig.url}/ar${route}`;

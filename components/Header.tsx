@@ -99,6 +99,7 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
           <div className="site-header__body">
             <div className="site-header__top">
               <div className="site-header__info">
+                <Link href="/free-assessment" className="site-header__assess">{lang === 'ar' ? 'تقييم مجاني' : 'Free Assessment'}</Link>
                 {siteConfig.publicContact.email && (
                   <a href={`mailto:${siteConfig.publicContact.email}`}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
@@ -109,7 +110,6 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
               <div className="site-header__tools">
                 <div className="site-header__links">
                   <Link href={localizedPath(lang, '/contact')}>{t.contact}</Link>
-                  <Link href="/tools">{t.tools}</Link>
                   <Link href={localizedPath(lang, '/news')}>{t.news}</Link>
                 </div>
                 <div className="site-header__langs" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>

@@ -58,8 +58,6 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
         { href: '/about/values', label: lang === 'ar' ? 'قيمنا' : 'Values' },
       ],
     },
-    { key: 'news', href: '/news', label: t.news },
-    { key: 'contact', href: '/contact', label: t.contact },
   ];
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import type { ToolDefinition } from './types';
 import { australiaPoints } from './australia-points';
 import { canadaCrs } from './canada-crs';
 import { canadaFsw } from './canada-fsw';
+import { germanyOpportunityCard } from './germany-opportunity-card';
 import { ieltsClb } from './ielts-clb';
 import { ukSkilledWorker } from './uk-skilled-worker';
 
@@ -29,6 +30,12 @@ export const tools: ToolDefinition[] = [
     summary: 'See whether your job offer, skill level, English and salary reach the 70 points needed.',
     officialUrl: 'https://www.gov.uk/skilled-worker-visa',
     calculator: ukSkilledWorker,
+  },
+  {
+    slug: 'germany-opportunity-card-points', name: 'Germany Opportunity Card Points Calculator', country: 'Germany', system: 'Opportunity Card (Chancenkarte) points scheme',
+    summary: 'Estimate your points for the Germany Opportunity Card against the 6-point minimum.',
+    officialUrl: 'https://www.make-it-in-germany.com/en/visa-residence/types/opportunity-card',
+    calculator: germanyOpportunityCard,
   },
   {
     slug: 'ielts-to-clb-converter', name: 'IELTS to CLB Converter', country: 'Canada', system: 'Canadian Language Benchmarks',
