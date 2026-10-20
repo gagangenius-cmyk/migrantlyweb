@@ -111,13 +111,13 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
                 <div className="site-header__links">
                   <Link href={localizedPath(lang, '/contact')}>{t.contact}</Link>
                   <Link href={localizedPath(lang, '/news')}>{t.news}</Link>
+                  <Link href="/faq">{lang === 'ar' ? 'الأسئلة الشائعة' : "FAQ's"}</Link>
                 </div>
                 <div className="site-header__langs" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
                   <a href={alternateLocalePath(pathname, 'en')} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} className={lang === 'en' ? 'is-active' : undefined}>English</a>
                   <a href={alternateLocalePath(pathname, 'ar')} hrefLang="ar" lang="ar" aria-current={lang === 'ar' ? 'true' : undefined} className={lang === 'ar' ? 'is-active' : undefined}>العربية</a>
                 </div>
                 <ThemeToggle lang={lang} />
-                <SocialLinks lang={lang} className="site-header__social" />
               </div>
             </div>
             <div className="site-header__main">

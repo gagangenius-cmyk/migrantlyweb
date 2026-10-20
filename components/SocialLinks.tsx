@@ -1,7 +1,7 @@
 import { SocialIcon } from './Icons';
 import { siteConfig, type Locale, type SocialNetwork } from '@/lib/site-config';
 
-const names: Record<SocialNetwork, string> = { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', x: 'X' };
+const names: Record<SocialNetwork, string> = { facebook: 'Facebook', instagram: 'Instagram', youtube: 'YouTube', linkedin: 'LinkedIn', x: 'X' };
 
 export default function SocialLinks({ lang, className = '' }: { lang: Locale; className?: string }) {
   const entries = Object.entries(siteConfig.publicContact.social) as [SocialNetwork, string | null][];

@@ -1,5 +1,5 @@
 export type Locale = 'en' | 'ar';
-export type SocialNetwork = 'facebook' | 'instagram' | 'linkedin' | 'x';
+export type SocialNetwork = 'facebook' | 'instagram' | 'youtube' | 'linkedin' | 'x';
 
 export const siteConfig = {
   name: 'Migrantly',
@@ -8,7 +8,8 @@ export const siteConfig = {
     email: 'info@migrantly.ae' as string | null,
     phone: null as string | null,
     whatsapp: null as string | null,
-    social: { facebook: null, instagram: null, linkedin: null, x: null } satisfies Record<SocialNetwork, string | null>,
+    // TODO: replace these placeholder links with the real Migrantly profile URLs.
+    social: { facebook: 'https://www.facebook.com/', instagram: 'https://www.instagram.com/', youtube: 'https://www.youtube.com/', linkedin: 'https://www.linkedin.com/', x: 'https://x.com/' } satisfies Record<SocialNetwork, string | null>,
   },
   whatsappMessage: {
     en: "Hello Migrantly, I'd like help understanding my immigration options.",

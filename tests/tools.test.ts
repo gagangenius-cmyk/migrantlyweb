@@ -24,7 +24,7 @@ describe('Canada CRS', () => {
 
 describe('Australia points test', () => {
   it('scores age 25-32, proficient English, bachelor, 3-4 years overseas experience at 70', () => {
-    expect(run(australiaPoints, { english: '10', overseas: '5' }).total).toBe(30 + 10 + 5 + 15 + 10);
+    expect(run(australiaPoints, { ielts_listening: '7', ielts_reading: '7', ielts_writing: '7', ielts_speaking: '7', overseas: '5' }).total).toBe(30 + 10 + 5 + 15 + 10);
   });
   it('caps skilled employment at 20', () => {
     const r = run(australiaPoints, { overseas: '15', local: '20' });

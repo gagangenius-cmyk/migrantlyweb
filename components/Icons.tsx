@@ -59,10 +59,11 @@ export const PhoneIcon = () => (
   </svg>
 );
 
-export const SocialIcon = ({ network }: { network: 'facebook' | 'instagram' | 'linkedin' | 'x' }) => {
+export const SocialIcon = ({ network }: { network: 'facebook' | 'instagram' | 'youtube' | 'linkedin' | 'x' }) => {
   const paths = {
     facebook: 'M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.7.3-1 1-1Z',
     instagram: 'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm6-1.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z',
+    youtube: 'M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.7 2 12 2 12s0 3.3.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.7 19 12 19 12 19s6.3 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.5.4-4.8.4-4.8s0-3.3-.4-4.8ZM10 15V9l5.2 3L10 15Z',
     linkedin: 'M4 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM2 9h4v13H2V9Zm7 0h4v2c1-1.5 2.4-2.4 4.4-2.4 4 0 4.6 2.7 4.6 6.2V22h-4v-6.4c0-1.6 0-3.5-2.2-3.5s-2.6 1.7-2.6 3.4V22H9V9Z',
     x: 'M18.5 2H22l-7.7 8.8L23 22h-6.8l-5.3-7-6.1 7H1.3l8-9.2L1 2h7l4.8 6.3L18.5 2Zm-1.2 18h1.9L6.9 3.9h-2L17.3 20Z',
   };

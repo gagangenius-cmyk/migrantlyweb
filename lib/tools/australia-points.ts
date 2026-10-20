@@ -1,13 +1,35 @@
-import type { Answers, Calculator, CalculatorResult, Field, ResultRow } from './types';
+import type { Answers, Calculator, CalculatorResult, Field, Option, ResultRow } from './types';
 import { num, yesNo } from './types';
 
 // General Skilled Migration points test (subclasses 189, 190 and 491). Pass mark: 65.
+// Individual English scores. Levels: 0 competent, 10 proficient, 20 superior (points awarded).
+const ab = ['listening', 'reading', 'writing', 'speaking'] as const;
+const pteMin: Record<(typeof ab)[number], [number, number, number]> = { listening: [47, 58, 69], reading: [48, 59, 70], writing: [51, 69, 85], speaking: [54, 76, 88] };
+const cap = (x: string) => x.charAt(0).toUpperCase() + x.slice(1);
+const bandOptions: Option[] = [{ value: '0', label: 'Below 6.0' }, ...[6, 6.5, 7, 7.5, 8, 8.5, 9].map((b) => ({ value: String(b), label: b.toFixed(1) }))];
+const englishFields: Field[] = [
+  { id: 'au_test', section: 'English', label: 'Which English test did you take?', default: 'ielts', options: [{ value: 'ielts', label: 'IELTS' }, { value: 'pte', label: 'PTE Academic' }] },
+  ...ab.map((x): Field => ({ id: 'ielts_' + x, section: 'English', label: 'IELTS ' + cap(x) + ' band', default: '6', options: bandOptions, showIf: (a) => a.au_test !== 'pte' })),
+  ...ab.map((x): Field => ({
+    id: 'pte_' + x, section: 'English', label: 'PTE ' + cap(x) + ' score', default: '0', showIf: (a) => a.au_test === 'pte',
+    options: [{ value: '0', label: 'Below ' + pteMin[x][0] }, { value: '1', label: pteMin[x][0] + ' to ' + (pteMin[x][1] - 1) + ' (Competent)' }, { value: '2', label: pteMin[x][1] + ' to ' + (pteMin[x][2] - 1) + ' (Proficient)' }, { value: '3', label: pteMin[x][2] + ' or more (Superior)' }],
+  })),
+];
+const englishPoints = (a: Answers) => {
+  if (a.au_test === 'pte') {
+    const level = Math.min(...ab.map((x) => num(a, 'pte_' + x)));
+    return level >= 3 ? 20 : level === 2 ? 10 : 0;
+  }
+  const lowest = Math.min(...ab.map((x) => num(a, 'ielts_' + x)));
+  return lowest >= 8 ? 20 : lowest >= 7 ? 10 : 0;
+};
+
 const fields: Field[] = [
   {
     id: 'age', section: 'Personal', label: 'Age at time of invitation', default: '25',
     options: [{ value: '18', label: '18–24' }, { value: '25', label: '25–32' }, { value: '33', label: '33–39' }, { value: '40', label: '40–44' }, { value: '45', label: '45 or older' }],
   },
-  { id: 'english', section: 'English', label: 'English language ability', default: '0', options: [{ value: '0', label: 'Competent (IELTS 6 in each band)' }, { value: '10', label: 'Proficient (IELTS 7 in each band)' }, { value: '20', label: 'Superior (IELTS 8 in each band)' }] },
+  ...englishFields,
   { id: 'overseas', section: 'Skilled employment', label: 'Skilled employment outside Australia (last 10 years)', default: '0', options: [{ value: '0', label: 'Less than 3 years' }, { value: '5', label: '3–4 years' }, { value: '10', label: '5–7 years' }, { value: '15', label: '8 years or more' }] },
   { id: 'local', section: 'Skilled employment', label: 'Skilled employment in Australia (last 10 years)', default: '0', options: [{ value: '0', label: 'Less than 1 year' }, { value: '5', label: '1–2 years' }, { value: '10', label: '3–4 years' }, { value: '15', label: '5–7 years' }, { value: '20', label: '8 years or more' }] },
   { id: 'education', section: 'Education', label: 'Highest qualification', default: '15', options: [{ value: '0', label: 'None of the below' }, { value: '10', label: 'Diploma or trade qualification (completed in Australia), or another assessed qualification' }, { value: '15', label: "Bachelor's or Master's degree (Australian or recognised)" }, { value: '20', label: 'Doctorate (Australian or recognised)' }] },
@@ -25,7 +47,7 @@ function compute(a: Answers): CalculatorResult {
   const add = (group: string, label: string, points: number, max: number) => rows.push({ group, label, value: String(points), points, max });
   const ageYears = num(a, 'age');
   const pAge = ageYears === 18 ? 25 : ageYears === 25 ? 30 : ageYears === 33 ? 25 : ageYears === 40 ? 15 : 0;
-  const pEnglish = num(a, 'english');
+  const pEnglish = englishPoints(a);
   const pEmployment = Math.min(num(a, 'overseas') + num(a, 'local'), 20);
   const pEducation = num(a, 'education');
   const pStem = num(a, 'stem') * 10;

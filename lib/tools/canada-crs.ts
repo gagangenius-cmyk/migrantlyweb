@@ -1,5 +1,6 @@
 import type { Answers, Calculator, CalculatorResult, Field, Option, ResultRow } from './types';
 import { num, yesNo } from './types';
+import { languageFields, withClb } from './language-tests';
 
 // Comprehensive Ranking System (Express Entry). Arranged-employment points were removed on 25 March 2025.
 const withSpouse = (a: Answers) => a.spouse === '1';
@@ -51,10 +52,7 @@ const fields: Field[] = [
     options: Array.from({ length: 33 }, (_, i) => ({ value: String(i + 17), label: i === 0 ? '17 or younger' : i === 32 ? '49 or older' : String(i + 17) })),
   },
   { id: 'education', section: 'Education', label: 'Highest level of education', options: eduOptions, default: 'bachelor' },
-  ...abilities.map((ability): Field => ({
-    id: `en_${ability}`, section: 'Language (English)', label: `English ${ability} (CLB)`, options: clbOptions, default: '9',
-    help: ability === 'listening' ? 'Convert IELTS results with our IELTS to CLB converter.' : undefined,
-  })),
+  ...languageFields(),
   { id: 'second', section: 'Language (French)', label: 'French (NCLC) level, same across all four abilities', options: clbOptions, default: '0', help: 'Choose the level you reach in your weakest ability.' },
   { id: 'cew', section: 'Work experience', label: 'Skilled work experience in Canada', options: yearOptions(5), default: '0' },
   { id: 'fwe', section: 'Work experience', label: 'Skilled work experience outside Canada', options: [{ value: '0', label: 'None or less than 1 year' }, { value: '1', label: '1–2 years' }, { value: '3', label: '3 years or more' }], default: '0' },
@@ -68,6 +66,7 @@ const fields: Field[] = [
 ];
 
 function compute(a: Answers): CalculatorResult {
+  a = withClb(a);
   const spouse = withSpouse(a);
   const idx = spouse ? 1 : 0;
   const edu = a.education in education ? a.education : 'none';

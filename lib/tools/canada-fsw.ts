@@ -1,5 +1,6 @@
 import type { Answers, Calculator, CalculatorResult, Field, Option, ResultRow } from './types';
 import { num, yesNo } from './types';
+import { languageFields, withClb } from './language-tests';
 
 // Federal Skilled Worker Program 67-point selection grid. Pass mark: 67.
 const clbOptions: Option[] = [
@@ -26,7 +27,7 @@ const fields: Field[] = [
       { value: '23', label: "Master's or professional degree" }, { value: '25', label: 'Doctoral degree (PhD)' },
     ],
   },
-  ...abilities.map((ability): Field => ({ id: `en_${ability}`, section: 'First official language', label: `English ${ability} (CLB)`, options: clbOptions, default: '8' })),
+  ...languageFields(),
   { id: 'second', section: 'Second official language', label: 'French (NCLC) level, same across all four abilities', options: clbOptions, default: '0', help: 'You earn 4 points if you reach CLB 5 or higher in all four abilities.' },
   { id: 'experience', section: 'Skilled work experience', label: 'Years of skilled work experience (last 10 years, TEER 0, 1, 2 or 3)', default: '2', options: [{ value: '0', label: 'Less than 1 year' }, { value: '1', label: '1 year' }, { value: '2', label: '2–3 years' }, { value: '4', label: '4–5 years' }, { value: '6', label: '6 years or more' }] },
   { id: 'offer', section: 'Arranged employment', label: 'Valid job offer from a Canadian employer', options: yesNo, default: '0' },
@@ -43,6 +44,7 @@ const abilityPoints = (clb: number) => (clb >= 9 ? 6 : clb === 8 ? 5 : clb === 7
 const experiencePoints = (years: number) => ({ 0: 0, 1: 9, 2: 11, 4: 13, 6: 15 } as Record<number, number>)[years] ?? 0;
 
 function compute(a: Answers): CalculatorResult {
+  a = withClb(a);
   const rows: ResultRow[] = [];
   const add = (group: string, label: string, points: number, max: number) => rows.push({ group, label, value: String(points), points, max });
 

@@ -41,7 +41,7 @@ const news = [
 ];
 
 export default function Home() {
-  const [heroMode, setHeroMode] = useState<'skilled' | 'investor'>('skilled');
+  const [heroMode, setHeroMode] = useState<'skilled' | 'investor' | 'tourist'>('skilled');
   const [activePathway, setActivePathway] = useState(pathways[0].id);
   const [programFilters, setProgramFilters] = useState({ destination: '', type: '', investment: '' });
 
@@ -68,14 +68,21 @@ export default function Home() {
                   onClick={() => setHeroMode('skilled')}
                   type="button"
                 >
-                  Skilled Worker
+                  Skilled Visa
                 </button>
                 <button
                   className={heroMode === 'investor' ? 'active' : ''}
                   onClick={() => setHeroMode('investor')}
                   type="button"
                 >
-                  Business Investor
+                  Business Visa
+                </button>
+                <button
+                  className={heroMode === 'tourist' ? 'active' : ''}
+                  onClick={() => setHeroMode('tourist')}
+                  type="button"
+                >
+                  Tourist Visa
                 </button>
               </div>
               <div className="home-hero-filter-form">
@@ -87,17 +94,15 @@ export default function Home() {
                 </div>
                 <div className="home-hero-filter">
                   <select aria-label="Program type" className="home-hero-filter__select" value={programFilters.type} onChange={(event) => setProgramFilters((current) => ({ ...current, type: event.target.value }))}>
-                    <option value="" disabled>Program Type</option>
-                    <option value="all">All Programs</option><option value="skilled-worker">Skilled Worker</option><option value="business-investor">Business & Investor</option><option value="study-visa">Study Visa</option><option value="citizenship">Citizenship</option>
+                    {heroMode === 'tourist' ? (<><option value="" disabled>Visa Type</option><option value="tourist-single">Tourist visa, single entry</option><option value="tourist-multiple">Tourist visa, multiple entry</option><option value="schengen">Schengen visa</option><option value="visit-family">Family or friends visit</option><option value="transit">Transit visa</option><option value="e-visa">E-visa</option></>) : (<><option value="" disabled>Program Type</option><option value="all">All Programs</option><option value="skilled-worker">Skilled Worker</option><option value="business-investor">Business & Investor</option><option value="study-visa">Study Visa</option><option value="citizenship">Citizenship</option></>)}
                   </select>
                 </div>
                 <div className="home-hero-filter">
                   <select aria-label="Investment range" className="home-hero-filter__select" value={programFilters.investment} onChange={(event) => setProgramFilters((current) => ({ ...current, investment: event.target.value }))}>
-                    <option value="" disabled>Investment Range</option>
-                    <option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option>
+                    {heroMode === 'tourist' ? (<><option value="" disabled>Stay Duration</option><option value="up-to-15">Up to 15 days</option><option value="up-to-30">Up to 30 days</option><option value="up-to-90">Up to 90 days</option><option value="over-90">Over 90 days</option></>) : (<><option value="" disabled>Investment Range</option><option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option></>)}
                   </select>
                 </div>
-                <Link href={`/programs?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">
+                <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/programs?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">
                   Search Programs
                   <ArrowIcon />
                 </Link>
@@ -110,7 +115,8 @@ export default function Home() {
           <div className="home-hero-search--desktop">
             <div className="home-hero-search__tabs" data-mode={heroMode}>
               <button className={heroMode === 'skilled' ? 'active' : ''} onClick={() => setHeroMode('skilled')} type="button">Skilled</button>
-              <button className={heroMode === 'investor' ? 'active' : ''} onClick={() => setHeroMode('investor')} type="button">Investor</button>
+              <button className={heroMode === 'investor' ? 'active' : ''} onClick={() => setHeroMode('investor')} type="button">Business</button>
+              <button className={heroMode === 'tourist' ? 'active' : ''} onClick={() => setHeroMode('tourist')} type="button">Tourist</button>
             </div>
             <div className="home-hero-filter-form">
               <div className="home-hero-filter">
@@ -121,17 +127,15 @@ export default function Home() {
               </div>
               <div className="home-hero-filter">
                 <select aria-label="Program type" className="home-hero-filter__select" value={programFilters.type} onChange={(event) => setProgramFilters((current) => ({ ...current, type: event.target.value }))}>
-                  <option value="" disabled>Program</option>
-                  <option value="all">All Programs</option><option value="skilled-worker">Skilled Worker</option><option value="business-investor">Business & Investor</option><option value="study-visa">Study Visa</option>
+                  {heroMode === 'tourist' ? (<><option value="" disabled>Visa Type</option><option value="tourist-single">Tourist visa, single entry</option><option value="tourist-multiple">Tourist visa, multiple entry</option><option value="schengen">Schengen visa</option><option value="visit-family">Family or friends visit</option><option value="transit">Transit visa</option><option value="e-visa">E-visa</option></>) : (<><option value="" disabled>Program</option><option value="all">All Programs</option><option value="skilled-worker">Skilled Worker</option><option value="business-investor">Business & Investor</option><option value="study-visa">Study Visa</option></>)}
                 </select>
               </div>
               <div className="home-hero-filter">
                 <select aria-label="Investment range" className="home-hero-filter__select" value={programFilters.investment} onChange={(event) => setProgramFilters((current) => ({ ...current, investment: event.target.value }))}>
-                  <option value="" disabled>Investment</option>
-                  <option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option>
+                  {heroMode === 'tourist' ? (<><option value="" disabled>Stay Duration</option><option value="up-to-15">Up to 15 days</option><option value="up-to-30">Up to 30 days</option><option value="up-to-90">Up to 90 days</option><option value="over-90">Over 90 days</option></>) : (<><option value="" disabled>Investment</option><option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option></>)}
                 </select>
               </div>
-              <Link href={`/programs?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">Search<ArrowIcon /></Link>
+              <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/programs?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">Search<ArrowIcon /></Link>
             </div>
           </div>
         </div>
@@ -142,7 +146,7 @@ export default function Home() {
           <div className="featured-header">
             <p className="section-label">Popular programs</p>
             <h2 className="section-title">
-              We offer immigration programs ready for immediate application. For those who don’t want to wait.
+              We turn complex global migration frameworks into smooth, predictable pathways for you and your family.
             </h2>
           </div>
 
@@ -189,10 +193,10 @@ export default function Home() {
           <div className="about-content container">
             <p className="section-label" style={{ color: 'rgba(255,255,255,0.7)' }}>About us</p>
             <h2 className="section-title" style={{ maxWidth: '720px' }}>
-              We understand how important your immigration decision is. That’s why we aim to make every process as smooth as possible.
+              Your future knows no boundaries. We simplify complex immigration frameworks to make your move smooth and certain.
             </h2>
             <p className="about-text">
-              Our approach is built on a clear understanding of each client, their priorities and how their new life will take shape. From eligibility assessment to submission and beyond, every stage is managed with precision and attention to detail, ensuring a seamless and uncompromised journey.
+              We build tailored relocation strategies around your goals. From your initial profile assessment through final submission and post-landing support, every detail is handled with absolute precision to guarantee a flawless, stress-free crossing of borders.
             </p>
             <Link href="/about" className="btn btn-outline">Learn more about us</Link>
           </div>
