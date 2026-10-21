@@ -26,6 +26,8 @@ export interface CalculatorResult {
   total: number;
   max: number;
   unit: string;
+  /** When true the result shows progress to the pass mark and never displays the maximum. */
+  hideMax?: boolean;
   /** Pass mark or minimum required, when the system has one. */
   threshold?: { value: number; label: string };
   rows: ResultRow[];

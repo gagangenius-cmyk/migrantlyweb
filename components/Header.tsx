@@ -113,9 +113,13 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
                   <Link href={localizedPath(lang, '/news')}>{t.news}</Link>
                   <Link href="/faq">{lang === 'ar' ? 'الأسئلة الشائعة' : "FAQ's"}</Link>
                 </div>
-                <div className="site-header__langs" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
-                  <a href={alternateLocalePath(pathname, 'en')} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} className={lang === 'en' ? 'is-active' : undefined}>English</a>
-                  <a href={alternateLocalePath(pathname, 'ar')} hrefLang="ar" lang="ar" aria-current={lang === 'ar' ? 'true' : undefined} className={lang === 'ar' ? 'is-active' : undefined}>العربية</a>
+                <div className="flag-switch" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
+                  <span className={lang === 'en' ? 'is-on' : undefined} lang="en">EN</span>
+                  <a href={alternateLocalePath(pathname, lang === 'ar' ? 'en' : 'ar')} hrefLang={lang === 'ar' ? 'en' : 'ar'} className={`flag-switch__track is-${lang}`} aria-label={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'} title={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}>
+                    <span className="flag-switch__flag">{lang === 'ar' ? (<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="10" fill="#00732F" /><rect y="10" width="60" height="10" fill="#fff" /><rect y="20" width="60" height="10" fill="#000" /><rect width="16" height="30" fill="#FF0000" /></svg>) : (<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0L60 30M60 0L0 30" stroke="#fff" strokeWidth="6" /><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" strokeWidth="2.5" /><path d="M30 0V30M0 15H60" stroke="#fff" strokeWidth="10" /><path d="M30 0V30M0 15H60" stroke="#C8102E" strokeWidth="6" /></svg>)}</span>
+                    <i className="flag-switch__knob" />
+                  </a>
+                  <span className={lang === 'ar' ? 'is-on' : undefined} lang="ar">AR</span>
                 </div>
                 <ThemeToggle lang={lang} />
               </div>

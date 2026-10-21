@@ -18,8 +18,9 @@ export default function PointsCalculator({ slug }: { slug: string }) {
   const result = useMemo(() => (calculator ? calculator.compute(answers) : null), [calculator, answers]);
 
   if (!calculator || !result) return null;
-  const pct = Math.min(100, (result.total / result.max) * 100);
-  const thresholdPct = result.threshold ? Math.min(100, (result.threshold.value / result.max) * 100) : null;
+  const scaleMax = result.hideMax && result.threshold ? Math.max(result.threshold.value * 1.5, result.total) : result.max;
+  const pct = Math.min(100, (result.total / scaleMax) * 100);
+  const thresholdPct = result.threshold ? Math.min(100, (result.threshold.value / scaleMax) * 100) : null;
   const reached = result.threshold ? result.total >= result.threshold.value : null;
   const groups = Array.from(new Set(result.rows.map((row) => row.group ?? '')));
 
@@ -46,11 +47,11 @@ export default function PointsCalculator({ slug }: { slug: string }) {
       <aside className="calc__result" aria-live="polite">
         <p className="calc__label">Your estimated result</p>
         <p className="calc__total"><span>{result.total}</span> <small>{result.unit}</small></p>
-        <div className="calc__bar" role="img" aria-label={`${result.total} out of ${result.max}`}>
+        <div className="calc__bar" role="img" aria-label={result.hideMax ? `${result.total} points` : `${result.total} out of ${result.max}`}>
           <i style={{ width: `${pct}%` }} />
           {thresholdPct !== null && <b style={{ left: `${thresholdPct}%` }} title={result.threshold?.label} />}
         </div>
-        <p className="calc__scale"><span>0</span><span>{result.max}</span></p>
+        {result.hideMax ? (result.threshold && <p className="calc__scale"><span>0</span><span>{result.threshold.label}: {result.threshold.value}</span></p>) : <p className="calc__scale"><span>0</span><span>{result.max}</span></p>}
         {result.threshold && (
           <p className={`calc__verdict ${reached ? 'is-pass' : 'is-short'}`}>
             {reached ? `Meets the ${result.threshold.value}-point requirement.` : `${result.threshold.value - result.total} more point${result.threshold.value - result.total === 1 ? '' : 's'} needed to reach ${result.threshold.value}.`}

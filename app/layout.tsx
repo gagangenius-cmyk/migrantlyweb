@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import ContactDock from '@/components/ContactDock';
 import SocialRail from '@/components/SocialRail';
 import AssessmentPopup from '@/components/AssessmentPopup';
+import SiteChatbot from '@/components/SiteChatbot';
 import { siteConfig, type Locale } from '@/lib/site-config';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -36,6 +37,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <ContactDock lang={locale} />
         <SocialRail lang={locale} />
         <AssessmentPopup lang={locale} />
+        <SiteChatbot lang={locale} />
       </body>
     </html>
   );

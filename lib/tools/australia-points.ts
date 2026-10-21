@@ -30,8 +30,8 @@ const fields: Field[] = [
     options: [{ value: '18', label: '18–24' }, { value: '25', label: '25–32' }, { value: '33', label: '33–39' }, { value: '40', label: '40–44' }, { value: '45', label: '45 or older' }],
   },
   ...englishFields,
-  { id: 'overseas', section: 'Skilled employment', label: 'Skilled employment outside Australia (last 10 years)', default: '0', options: [{ value: '0', label: 'Less than 3 years' }, { value: '5', label: '3–4 years' }, { value: '10', label: '5–7 years' }, { value: '15', label: '8 years or more' }] },
-  { id: 'local', section: 'Skilled employment', label: 'Skilled employment in Australia (last 10 years)', default: '0', options: [{ value: '0', label: 'Less than 1 year' }, { value: '5', label: '1–2 years' }, { value: '10', label: '3–4 years' }, { value: '15', label: '5–7 years' }, { value: '20', label: '8 years or more' }] },
+  { id: 'overseas', section: 'Skilled employment', label: 'Skilled employment outside Australia (last 10 years)', default: '0', options: [{ value: 'none', label: 'No experience' }, { value: '0', label: 'Less than 3 years' }, { value: '5', label: '3–4 years' }, { value: '10', label: '5–7 years' }, { value: '15', label: '8 years or more' }] },
+  { id: 'local', section: 'Skilled employment', label: 'Skilled employment in Australia (last 10 years)', default: '0', options: [{ value: 'none', label: 'No experience' }, { value: '0', label: 'Less than 1 year' }, { value: '5', label: '1–2 years' }, { value: '10', label: '3–4 years' }, { value: '15', label: '5–7 years' }, { value: '20', label: '8 years or more' }] },
   { id: 'education', section: 'Education', label: 'Highest qualification', default: '15', options: [{ value: '0', label: 'None of the below' }, { value: '10', label: 'Diploma or trade qualification (completed in Australia), or another assessed qualification' }, { value: '15', label: "Bachelor's or Master's degree (Australian or recognised)" }, { value: '20', label: 'Doctorate (Australian or recognised)' }] },
   { id: 'stem', section: 'Education', label: 'Master’s by research or doctorate in STEM from an Australian institution', options: yesNo, default: '0' },
   { id: 'aus_study', section: 'Education', label: 'Australian study requirement met (2 academic years in Australia)', options: yesNo, default: '0' },
@@ -72,7 +72,7 @@ function compute(a: Answers): CalculatorResult {
 
   const total = pAge + pEnglish + pEmployment + pEducation + pStem + pStudy + pRegional + pPy + pCcl + pPartner + pNom;
   return {
-    total, max: 140, unit: 'points', threshold: { value: 65, label: 'Minimum pass mark' }, rows,
+    total, max: 140, hideMax: true, unit: 'points', threshold: { value: 65, label: 'Minimum pass mark' }, rows,
     notes: [
       'Meeting the pass mark only makes you eligible to submit an Expression of Interest. Invitations go to the highest scorers, and invitation scores are usually well above 65.',
       'You also need a positive skills assessment for an occupation on the relevant skilled occupation list.',

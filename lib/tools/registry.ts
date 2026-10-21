@@ -4,6 +4,8 @@ import { canadaCrs } from './canada-crs';
 import { canadaFsw } from './canada-fsw';
 import { germanyOpportunityCard } from './germany-opportunity-card';
 import { ieltsClb } from './ielts-clb';
+import { quebecQswp } from './quebec-qswp';
+import { saskatchewanSinp } from './saskatchewan-sinp';
 import { ukSkilledWorker } from './uk-skilled-worker';
 
 export const tools: ToolDefinition[] = [
@@ -18,6 +20,18 @@ export const tools: ToolDefinition[] = [
     summary: 'Check whether you reach the 67 points needed to qualify for Canada permanent residence under the Federal Skilled Worker Program.',
     officialUrl: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/eligibility/federal-skilled-workers/six-selection-factors-federal-skilled-workers.html',
     calculator: canadaFsw,
+  },
+  {
+    slug: 'saskatchewan-sinp', name: 'Saskatchewan SINP Points Calculator', country: 'Canada', system: 'SINP International Skilled Worker points grid',
+    summary: 'Check your points against the 110-point SINP grid and the 60-point minimum.',
+    officialUrl: 'https://www.saskatchewan.ca/residents/moving-to-saskatchewan/live-in-saskatchewan/by-immigrating/saskatchewan-immigrant-nominee-program/assess-your-eligibility',
+    calculator: saskatchewanSinp,
+  },
+  {
+    slug: 'quebec-qswp', name: 'Quebec QSWP Points Calculator', country: 'Canada', system: 'Quebec Regular Skilled Worker Program selection grid',
+    summary: 'Estimate your points on the Quebec skilled worker grid against the 50 / 59-point selection threshold.',
+    officialUrl: 'https://www.quebec.ca/en/immigration/permanent/skilled-workers',
+    calculator: quebecQswp,
   },
   {
     slug: 'australia-points-test', name: 'Australia Skilled Migration Points Calculator', country: 'Australia', system: 'General Skilled Migration points test (189 / 190 / 491)',
