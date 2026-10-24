@@ -18,8 +18,8 @@ export const siteConfig = {
 } as const;
 
 export const localeCopy = {
-  en: { menu: 'Menu', closeMenu: 'Close menu', assessment: 'Assessment', contact: 'Contact Us', home: 'Home', services: 'Services', countries: 'Countries', programs: 'Programs', about: 'About Us', news: 'News & Events', tools: 'Tools', language: 'العربية', whatsapp: 'WhatsApp', email: 'Email', chat: 'Chat' },
-  ar: { menu: 'القائمة', closeMenu: 'إغلاق القائمة', assessment: 'التقييم', contact: 'اتصل بنا', home: 'الرئيسية', services: 'الخدمات', countries: 'الدول', programs: 'البرامج', about: 'من نحن', news: 'الأخبار والفعاليات', tools: 'الأدوات', language: 'English', whatsapp: 'واتساب', email: 'البريد', chat: 'الدردشة' },
+  en: { menu: 'Menu', closeMenu: 'Close menu', assessment: 'Assessment', contact: 'Contact Us', home: 'Home', services: 'Services', countries: 'Countries', programs: 'Programs', about: 'About Us', news: 'News & Blog', tools: 'Tools', language: 'العربية', whatsapp: 'WhatsApp', email: 'Email', chat: 'Chat' },
+  ar: { menu: 'القائمة', closeMenu: 'إغلاق القائمة', assessment: 'التقييم', contact: 'اتصل بنا', home: 'الرئيسية', services: 'الخدمات', countries: 'الدول', programs: 'البرامج', about: 'من نحن', news: 'الأخبار والمدونة', tools: 'الأدوات', language: 'English', whatsapp: 'واتساب', email: 'البريد', chat: 'الدردشة' },
 } satisfies Record<Locale, Record<string, string>>;
 
 export function localizedPath(locale: Locale, path: string) {

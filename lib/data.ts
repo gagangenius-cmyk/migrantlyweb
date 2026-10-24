@@ -1,131 +1,4 @@
-export const services = [
-  {
-    slug: 'skilled-visas',
-    title: 'Skilled Visas',
-    tagline: 'Talent without borders',
-    description:
-      'Fast-track visas for skilled professionals in technology, healthcare, engineering and finance. We assess your eligibility, build your profile and manage the entire application from start to finish.',
-    image: '/assets/images/1521791136064-7986c2920216.webp',
-    features: [
-      'Express Entry & points-based systems',
-      'Provincial and state nomination programs',
-      'Occupation list matching & skills assessment',
-      'Language testing guidance (IELTS, PTE, TOEFL)',
-      'Job search support & employer connections',
-    ],
-    programs: [
-      { name: 'Canada Express Entry', processing: '6 – 12 months', cost: 'From $2,500', slug: 'canada-express-entry' },
-      { name: 'Australia Skilled Independent (189)', processing: '8 – 14 months', cost: 'From $3,000', slug: 'australia-skilled-189' },
-      { name: 'UK Skilled Worker Visa', processing: '3 – 6 months', cost: 'From $2,000', slug: 'uk-skilled-worker' },
-      { name: 'EU Blue Card', processing: '4 – 8 months', cost: 'From $2,800', slug: 'eu-blue-card' },
-    ],
-  },
-  {
-    slug: 'business-immigration',
-    title: 'Business Immigration',
-    tagline: 'Grow your wealth, secure residency',
-    description:
-      'Investor and entrepreneur programs tailored to your capital and ambitions. From golden visas to start-up pathways, we match you with the right program and handle every document.',
-    image: '/assets/images/1454165804606-c3d57bc86b40.webp',
-    features: [
-      'Golden visa & citizenship-by-investment',
-      'Entrepreneur and start-up visa programs',
-      'Investment structuring & compliance',
-      'Bank account opening & fund transfers',
-      'Permanent residency through investment',
-    ],
-    programs: [
-      { name: 'Portugal Golden Visa', processing: '12 – 18 months', cost: 'From €250,000', slug: 'portugal-golden-visa' },
-      { name: 'UK Innovator Founder Visa', processing: '6 – 10 months', cost: 'From £50,000', slug: 'uk-innovator-founder' },
-      { name: 'USA EB-5 Investor Visa', processing: '18 – 30 months', cost: 'From $800,000', slug: 'usa-eb5-investor' },
-      { name: 'Canada Start-up Visa', processing: '12 – 24 months', cost: 'From $200,000', slug: 'canada-startup-visa' },
-    ],
-  },
-  {
-    slug: 'family-visas',
-    title: 'Family Visas',
-    tagline: 'Reunite with loved ones',
-    description:
-      'Spouse, parent, partner and dependent visas handled with care and precision. We understand the emotional weight of family reunification and guide every step with empathy.',
-    image: '/assets/images/1521791136064-7986c2920216.webp',
-    features: [
-      'Spouse & de facto partner visas',
-      'Parent and grandparent sponsorship',
-      'Dependent child visas',
-      'Fiancé & prospective marriage visas',
-      'Family reunion appeals & reviews',
-    ],
-    programs: [
-      { name: 'Canada Family Sponsorship', processing: '10 – 20 months', cost: 'From $1,500', slug: 'canada-family-sponsorship' },
-      { name: 'UK Spouse Visa', processing: '6 – 12 months', cost: 'From £1,500', slug: 'uk-spouse-visa' },
-      { name: ' Australia Partner Visa (820/801)', processing: '12 – 24 months', cost: 'From AUD $7,000', slug: 'australia-partner-visa' },
-      { name: 'US Family-Based Green Card', processing: '12 – 36 months', cost: 'From $1,760', slug: 'us-family-green-card' },
-    ],
-  },
-  {
-    slug: 'citizenship',
-    title: 'Citizenship',
-    tagline: 'Become a global citizen',
-    description:
-      'Citizenship-by-investment and naturalization routes for you and your family. We advise on dual citizenship rules, residency requirements and the most efficient path to a second passport.',
-    image: '/assets/images/1573497019940-1c28c88b4f3e.webp',
-    features: [
-      'Citizenship-by-investment programs',
-      'Naturalization eligibility planning',
-      'Dual citizenship advisory',
-      'Passport renewal & documentation',
-      'Ancestry & descent-based citizenship',
-    ],
-    programs: [
-      { name: 'Malta Citizenship by Naturalisation (MEIN)', processing: '12 – 36 months', cost: 'From €690,000', slug: 'malta-citizenship-mein' },
-      { name: 'Portugal Citizenship (5-year residency)', processing: '5 – 6 years', cost: 'From $3,000', slug: 'portugal-citizenship' },
-      { name: 'Canada Citizenship (3/5 rule)', processing: 'After 3 years PR', cost: 'From $630', slug: 'canada-citizenship' },
-      { name: 'Antigua & Barbuda CBI', processing: '4 – 6 months', cost: 'From $100,000', slug: 'antigua-cbi' },
-    ],
-  },
-  {
-    slug: 'study-visas',
-    title: 'Study Visas',
-    tagline: 'Study and build a bridge to PR',
-    description:
-      'Study at world-class institutions and build a pathway to permanent residency after graduation. We help with university selection, visa applications and post-study work rights.',
-    image: '/assets/images/1521791136064-7986c2920216.webp',
-    features: [
-      'University & course selection',
-      'Student visa application & SOP support',
-      'GTE / genuine student statements',
-      'Post-study work visa pathways',
-      'Graduate-to-PR transition planning',
-    ],
-    programs: [
-      { name: 'Canada Study Permit', processing: '8 – 12 weeks', cost: 'From CAD $150', slug: 'canada-study-permit' },
-      { name: 'Australia Student Visa (500)', processing: '4 – 8 weeks', cost: 'From AUD $620', slug: 'australia-student-visa' },
-      { name: 'UK Student Visa', processing: '3 – 6 weeks', cost: 'From £363', slug: 'uk-student-visa' },
-      { name: 'US F-1 Student Visa', processing: '4 – 12 weeks', cost: 'From $510', slug: 'us-f1-student' },
-    ],
-  },
-  {
-    slug: 'visit-visas',
-    title: 'Visit Visas',
-    tagline: 'Explore the world with confidence',
-    description:
-      'Tourist and visitor visas for business trips, family visits and tourism. We handle your application with precision so you can focus on your journey.',
-    image: '/assets/images/1506744038136-46273834b3fb.webp',
-    features: [
-      'Tourist and visitor visa applications',
-      'Business visitor visas & B-1/B-2',
-      'Family visit & relative sponsorship',
-      'Multiple entry & long-validity visas',
-      'Visa extension, renewal and appeals',
-    ],
-    programs: [
-      { name: 'Canada Visitor Visa (TRV)', processing: '2 – 4 weeks', cost: 'From CAD $100', slug: 'canada-visitor-visa' },
-      { name: 'Australia Visitor Visa (600)', processing: '2 – 4 weeks', cost: 'From AUD $150', slug: 'australia-visitor-visa' },
-      { name: 'UK Standard Visitor Visa', processing: '3 – 6 weeks', cost: 'From £115', slug: 'uk-visitor-visa' },
-      { name: 'US B-1/B-2 Visitor Visa', processing: '2 – 8 weeks', cost: 'From $185', slug: 'us-visitor-visa' },
-    ],
-  },
-];
+export const services: { slug: string; title: string; tagline: string; description: string; image: string; features: string[]; programs: { name: string; processing: string; cost: string; slug: string }[] }[] = [];
 
 export const countries = [
   {
@@ -210,6 +83,34 @@ export const countries = [
       { label: 'Investment from', value: '€250K' },
       { label: 'Stay requirement', value: '7 days/yr' },
       { label: 'Citizenship', value: '5 years' },
+    ],
+  },
+  {
+    slug: 'new-zealand',
+    name: 'New Zealand',
+    tagline: 'Skilled work and a balanced lifestyle',
+    description:
+      'New Zealand offers skilled work visas and residence routes for qualified professionals, along with study, family and visitor options. Requirements depend on your occupation, qualifications and experience, so we check which route fits you.',
+    image: '/assets/countries/new-zealand.webp',
+    programs: ['Skilled Migrant routes', 'Work visas', 'Family visas', 'Student visas', 'Visitor visas'],
+    stats: [
+      { label: 'Main routes', value: 'Skilled and work visas' },
+      { label: 'Job offer', value: 'Needed for many work visas' },
+      { label: 'Next step', value: 'Free assessment' },
+    ],
+  },
+  {
+    slug: 'caribbean',
+    name: 'Caribbean Islands',
+    tagline: 'Citizenship and residence by investment',
+    description:
+      'Several Caribbean countries, including Dominica, Antigua and Barbuda, Grenada, Saint Lucia and Saint Kitts and Nevis, offer citizenship by investment programs. Costs, contributions and rules differ by country and change over time, so we compare the current options with you.',
+    image: '/assets/countries/caribbean.webp',
+    programs: ['Citizenship by Investment', 'Dominica', 'Antigua and Barbuda', 'Grenada', 'Saint Lucia', 'Saint Kitts and Nevis'],
+    stats: [
+      { label: 'Main route', value: 'Citizenship by investment' },
+      { label: 'Due diligence', value: 'Required' },
+      { label: 'Next step', value: 'Free assessment' },
     ],
   },
 ];
@@ -715,10 +616,10 @@ export const programs = [
 ];
 
 export const pathways = [
-  { id: 'skilled', title: 'Skilled Migration', href: '/services/skilled-visas', description: 'Points-based visas for skilled professionals in technology, healthcare, engineering and finance. We assess your eligibility, build your profile and manage the entire application.' },
-  { id: 'business', title: 'Business & Investor', href: '/services/business-immigration', description: 'Investor and entrepreneur programs tailored to your capital and ambitions. From golden visas to start-up pathways, we match you with the right program.' },
-  { id: 'family', title: 'Family Sponsorship', href: '/services/family-visas', description: 'Spouse, parent, partner and dependent visas handled with care and precision. We understand the emotional weight of family reunification.' },
-  { id: 'study', title: 'Study Pathways', href: '/services/study-visas', description: 'Study at world-class institutions and build a pathway to permanent residency after graduation. We help with university selection and post-study work rights.' },
-  { id: 'citizenship', title: 'Citizenship', href: '/services/citizenship', description: 'Citizenship-by-investment and naturalization routes for you and your family. We advise on dual citizenship rules and the most efficient path to a second passport.' },
+  { id: 'skilled', title: 'Skilled Migration', href: '/services/permanent-residence', description: 'Points-based visas for skilled professionals in technology, healthcare, engineering and finance. We assess your eligibility, build your profile and manage the entire application.' },
+  { id: 'business', title: 'Business & Investor', href: '/services/residence-by-investment', description: 'Investor and entrepreneur programs tailored to your capital and ambitions. From golden visas to start-up pathways, we match you with the right program.' },
+  { id: 'family', title: 'Family Sponsorship', href: '/services/family-sponsorship', description: 'Spouse, parent, partner and dependent visas handled with care and precision. We understand the emotional weight of family reunification.' },
+  { id: 'study', title: 'Study Pathways', href: '/services/student-visa', description: 'Study at world-class institutions and build a pathway to permanent residency after graduation. We help with university selection and post-study work rights.' },
+  { id: 'citizenship', title: 'Citizenship', href: '/services/citizenship-by-investment', description: 'Citizenship-by-investment and naturalization routes for you and your family. We advise on dual citizenship rules and the most efficient path to a second passport.' },
   { id: 'mobility', title: 'Global Mobility', href: '/contact', description: 'Multi-jurisdictional strategies for individuals and families who need seamless cross-border movement, tax residency planning and diplomatic passport support.' },
 ];

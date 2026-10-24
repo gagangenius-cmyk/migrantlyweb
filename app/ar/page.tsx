@@ -39,7 +39,7 @@ export default function ArHome() {
                   {ui.home.businessInvestor}
                 </button>
               </div>
-              <form className="home-hero-filter-form" action="/ar/programs" method="get">
+              <form className="home-hero-filter-form" action="/free-assessment" method="get">
                 <input type="hidden" name="mode" value={heroMode} />
                 <div className="home-hero-filter">
                   <select aria-label={ui.home.destination} name="destination" className="home-hero-filter__select" defaultValue="">
@@ -74,7 +74,7 @@ export default function ArHome() {
               <button className={heroMode === 'skilled' ? 'active' : ''} onClick={() => setHeroMode('skilled')} type="button">عامل ماهر</button>
               <button className={heroMode === 'investor' ? 'active' : ''} onClick={() => setHeroMode('investor')} type="button">مستثمر</button>
             </div>
-            <form className="home-hero-filter-form" action="/ar/programs" method="get">
+            <form className="home-hero-filter-form" action="/free-assessment" method="get">
               <input type="hidden" name="mode" value={heroMode} />
               <div className="home-hero-filter">
                 <select aria-label={ui.home.destination} name="destination" className="home-hero-filter__select" defaultValue="">
@@ -110,7 +110,7 @@ export default function ArHome() {
           </div>
 
           <div className="featured-grid">
-            <Link href="/ar/programs/canada-skilled-immigration" className="featured-item card">
+            <Link href="/tools/canada-express-entry-crs" className="featured-item card">
               <Image width={900} height={600} className="featured-item-image" src="/assets/countries/canada.webp" alt="كندا" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">الهجرة الماهرة – كندا</h3>
@@ -125,7 +125,7 @@ export default function ArHome() {
               </div>
             </Link>
 
-            <Link href="/ar/programs/australia-skilled-immigration" className="featured-item card">
+            <Link href="/tools/australia-points-test" className="featured-item card">
               <Image width={900} height={600} className="featured-item-image" src="/assets/countries/australia.webp" alt="أستراليا" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">الهجرة الماهرة – أستراليا</h3>

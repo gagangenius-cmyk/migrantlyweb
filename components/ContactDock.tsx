@@ -6,7 +6,7 @@ import { ChatIcon, CloseIcon, EmailIcon, WhatsAppIcon } from './Icons';
 import { buildEmailUrl, buildWhatsAppUrl, localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 
 type Status = 'idle' | 'sending' | 'success' | 'error';
-const serviceOptions = ['skilled-visas', 'business-immigration', 'family-visas', 'study-visas', 'citizenship', 'visit-visas'];
+const serviceOptions = ['permanent-residence', 'citizenship-by-investment', 'residence-by-investment', 'student-visa', 'family-sponsorship', 'global-tourist-visa'];
 const destinations = ['canada', 'australia', 'united-kingdom', 'united-states', 'european-union', 'portugal'];
 
 const copy = {
@@ -31,8 +31,8 @@ const copy = {
 };
 
 const labels = {
-  en: { 'skilled-visas': 'Skilled visas', 'business-immigration': 'Business immigration', 'family-visas': 'Family visas', 'study-visas': 'Study visas', citizenship: 'Citizenship', 'visit-visas': 'Visit visas', canada: 'Canada', australia: 'Australia', 'united-kingdom': 'United Kingdom', 'united-states': 'United States', 'european-union': 'European Union', portugal: 'Portugal' },
-  ar: { 'skilled-visas': 'تأشيرات العمالة الماهرة', 'business-immigration': 'هجرة الأعمال', 'family-visas': 'تأشيرات الأسرة', 'study-visas': 'تأشيرات الدراسة', citizenship: 'الجنسية', 'visit-visas': 'تأشيرات الزيارة', canada: 'كندا', australia: 'أستراليا', 'united-kingdom': 'المملكة المتحدة', 'united-states': 'الولايات المتحدة', 'european-union': 'الاتحاد الأوروبي', portugal: 'البرتغال' },
+  en: { 'permanent-residence': 'Permanent residence', 'citizenship-by-investment': 'Citizenship by investment', 'residence-by-investment': 'Residence by investment', 'student-visa': 'Student visa', 'family-sponsorship': 'Family sponsorship', 'global-tourist-visa': 'Tourist visa', canada: 'Canada', australia: 'Australia', 'united-kingdom': 'United Kingdom', 'united-states': 'United States', 'european-union': 'European Union', portugal: 'Portugal' },
+  ar: { 'permanent-residence': 'الإقامة الدائمة', 'citizenship-by-investment': 'الجنسية بالاستثمار', 'residence-by-investment': 'الإقامة بالاستثمار', 'student-visa': 'تأشيرة الطالب', 'family-sponsorship': 'كفالة الأسرة', 'global-tourist-visa': 'تأشيرة سياحية', canada: 'كندا', australia: 'أستراليا', 'united-kingdom': 'المملكة المتحدة', 'united-states': 'الولايات المتحدة', 'european-union': 'الاتحاد الأوروبي', portugal: 'البرتغال' },
 } as const;
 
 export default function ContactDock({ lang }: { lang: Locale }) {

@@ -19,7 +19,7 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
   const alternateLocale: Locale = lang === 'ar' ? 'en' : 'ar';
   const links = [
     ['home', '/'], ['services', '/services'], ['countries', '/countries'],
-    ['programs', '/programs'], ['tools', '/tools'], ['about', '/about'], ['news', '/news'], ['contact', '/contact'],
+    ['tools', '/tools'], ['about', '/about'], ['news', '/news'], ['contact', '/contact'],
   ] as const;
 
   const closeMenu = () => {

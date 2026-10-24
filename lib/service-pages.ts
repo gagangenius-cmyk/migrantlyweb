@@ -14,6 +14,10 @@ export interface ServicePage {
   steps: { title: string; text: string }[];
   documents: string[];
   faqs: { q: string; a: string }[];
+  /** Overrides the default /services/<slug> address (used by destination pages). */
+  path?: string;
+  /** Optional destination grid with flags. */
+  destinations?: { name: string; flag: string }[];
 }
 
 const IMG = {
@@ -126,6 +130,11 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: 'global-tourist-visa',
+    destinations: [
+      { name: 'United Kingdom', flag: 'gb' }, { name: 'USA', flag: 'us' }, { name: 'Canada', flag: 'ca' }, { name: 'Australia', flag: 'au' },
+      { name: 'New Zealand', flag: 'nz' }, { name: 'Europe (Schengen)', flag: 'eu' }, { name: 'China', flag: 'cn' }, { name: 'Japan', flag: 'jp' },
+      { name: 'Montenegro', flag: 'me' }, { name: 'South Africa', flag: 'za' }, { name: 'Brazil', flag: 'br' }, { name: 'Argentina', flag: 'ar' },
+    ],
     title: 'Global Tourist Visa',
     tagline: 'Travel the world without the paperwork stress',
     metaTitle: 'Tourist Visa Assistance — Visit Visas for Worldwide Travel',
@@ -145,29 +154,6 @@ export const servicePages: ServicePage[] = [
       { q: 'How early should I apply?', a: 'Apply as early as the embassy allows, since processing and appointment times vary by destination and season.' },
       { q: 'Does a tourist visa allow me to work?', a: 'No. Tourist visas do not allow employment. Work needs a separate visa.' },
       { q: 'Can I extend my stay?', a: 'Some countries allow extensions in limited cases. We advise on the rules for your destination.' },
-    ],
-  },
-  {
-    slug: 'dependent-visa',
-    title: 'Dependent Visa',
-    tagline: 'Keep your family together abroad',
-    metaTitle: 'Dependent Visa Services — Spouse & Children Visa Support',
-    metaDescription: 'Bring your spouse, partner and children with you. Migrantly guides dependent visa applications, documents and timing for popular destinations.',
-    keywords: ['dependent visa', 'spouse visa', 'family accompaniment', 'dependant visa'],
-    description: 'A dependent visa allows the family of a worker, student or resident to join them abroad. We help you meet the relationship, financial and documentation requirements.',
-    image: IMG.portrait,
-    intro: [
-      'Dependent visas let eligible family members, usually a spouse or partner and children, live in the country with the main visa holder. Requirements often include proof of relationship, accommodation and sufficient funds.',
-      'We help you work out who can be included, in what order to apply and which documents prove your relationship.',
-    ],
-    whoFor: ['Workers and students who want to bring their family', 'Permanent residents sponsoring family members', 'Spouses and partners joining a family member abroad'],
-    features: ['Eligibility check for each family member', 'Relationship evidence guidance', 'Financial and accommodation requirements', 'Application preparation and submission', 'Timing advice with the main applicant’s visa', 'Support with renewals and changes'],
-    steps: standardSteps('Tell us about the main applicant and the family members who want to join.', 'We submit the applications together or in sequence and keep you informed until all decisions are made.'),
-    documents: ['Passports for all applicants', 'Marriage and birth certificates', 'Main applicant’s visa or status evidence', 'Proof of funds and accommodation', 'Photographs', 'Medical and police checks where required'],
-    faqs: [
-      { q: 'Can dependants work or study?', a: 'It depends on the country and the main visa. Some allow work and study, others restrict it.' },
-      { q: 'Are unmarried partners covered?', a: 'Some countries recognise long-term partners, others do not. We check the rules for your destination.' },
-      { q: 'Is there an age limit for children?', a: 'Most countries set an age limit for dependent children, often with exceptions for students or those with disabilities.' },
     ],
   },
   {
@@ -214,29 +200,6 @@ export const servicePages: ServicePage[] = [
       { q: 'Can I change employers on a work permit?', a: 'Some permits are tied to one employer, while others are open. We check the conditions of your visa.' },
       { q: 'Does the employer need to be approved?', a: 'Many countries require employers to be licensed or to complete a labour market process first.' },
       { q: 'Can I get a job offer through you?', a: 'We guide the visa side and share general job-search advice. We cannot guarantee a job offer.' },
-    ],
-  },
-  {
-    slug: 'temporary-visa',
-    title: 'Temporary Visa',
-    tagline: 'Short and medium-term stays, handled properly',
-    metaTitle: 'Temporary Visa Services — Short-Term Stay & Extension Support',
-    metaDescription: 'Help with temporary visas, extensions and status changes. Migrantly guides short and medium-term stays for work, study, visits and more.',
-    keywords: ['temporary visa', 'visa extension', 'temporary resident visa', 'change of status'],
-    description: 'Temporary visas cover stays for work, study, business, treatment and visits. We help you choose the right category, apply on time and manage extensions.',
-    image: IMG.australia,
-    intro: [
-      'Temporary visas come with a fixed purpose and end date. Applying under the wrong category, or letting a visa lapse, can create serious problems later.',
-      'We help you pick the correct visa, keep track of expiry dates and plan extensions or changes of status before it is too late.',
-    ],
-    whoFor: ['People planning a short or medium-term stay abroad', 'Temporary residents who need to extend or change status', 'Applicants unsure which temporary category fits'],
-    features: ['Visa category selection', 'Application preparation and submission', 'Extension and renewal planning', 'Change-of-status guidance', 'Expiry tracking and reminders', 'Support if an application is refused'],
-    steps: standardSteps('Tell us the purpose and expected length of your stay.', 'We submit your application, track the decision and advise on extensions or longer-term options.'),
-    documents: ['Passport', 'Proof of purpose of stay', 'Proof of funds', 'Accommodation details', 'Photographs', 'Supporting letters from employer, school or host'],
-    faqs: [
-      { q: 'Can I switch from a temporary visa to permanent residence?', a: 'Sometimes. Many countries offer pathways from temporary status to residence, but not every visa qualifies.' },
-      { q: 'What happens if my visa expires while I wait for an extension?', a: 'Rules differ. Some countries allow you to remain while an in-time application is processed. We advise on your situation.' },
-      { q: 'How long can I stay?', a: 'The length depends on the visa category and country, and is set out in your visa conditions.' },
     ],
   },
   {
@@ -293,29 +256,6 @@ export const servicePages: ServicePage[] = [
       { q: 'Can I work on an Opportunity Card?', a: 'The card allows limited work alongside your job search, plus trial employment. The rules and hours are set by German law, so we confirm the current conditions with you.' },
       { q: 'Do I need to speak German?', a: 'Language skills earn points and help your job search. Requirements depend on your profile, so we check what applies to you.' },
       { q: 'What happens when I find a job?', a: 'You can usually change to a work visa or residence permit tied to your employment. We advise on the steps.' },
-    ],
-  },
-  {
-    slug: 'business-visa',
-    title: 'Business Visa',
-    tagline: 'Meetings, trade and expansion abroad',
-    metaTitle: 'Business Visa Services — Business Visit & Entrepreneur Visas',
-    metaDescription: 'Business visa support for meetings, conferences, trade and entrepreneur routes. Migrantly prepares complete applications and invitation documents.',
-    keywords: ['business visa', 'business visit visa', 'entrepreneur visa', 'start-up visa'],
-    description: 'Business visas cover short trips for meetings and conferences as well as longer routes for entrepreneurs and investors. We help you choose the right category and prepare the evidence.',
-    image: IMG.portrait,
-    intro: [
-      'Business visit visas allow short stays for meetings, negotiations, conferences and site visits, but not normal employment. Longer routes exist for founders, start-ups and investors who plan to build a business abroad.',
-      'We help you pick the right category, prepare invitation letters and company evidence, and present your plans clearly.',
-    ],
-    whoFor: ['Business owners and executives travelling for meetings', 'Delegates attending conferences and trade fairs', 'Entrepreneurs planning a company abroad', 'Investors exploring a new market'],
-    features: ['Visa category selection', 'Invitation letter and company document guidance', 'Business plan review for entrepreneur routes', 'Application preparation and submission', 'Multiple-entry visa planning', 'Guidance on moving to longer-term business residence'],
-    steps: standardSteps('Tell us the purpose of your trip or the business you plan to run.', 'We submit your application, track the decision and advise on future trips or longer-term options.'),
-    documents: ['Passport', 'Company registration and letters', 'Invitation letter from the host', 'Bank statements and tax records', 'Travel itinerary', 'Business plan for entrepreneur routes'],
-    faqs: [
-      { q: 'Can I work on a business visit visa?', a: 'Business visit visas allow meetings and similar activities, not regular employment. Doing paid work needs a different visa.' },
-      { q: 'How long can I stay?', a: 'Stay limits depend on the country and visa category. They are listed in the visa conditions.' },
-      { q: 'Can I start a company with a business visa?', a: 'Visit visas are not for setting up a business. Entrepreneur and investor routes are designed for that, and we help you assess them.' },
     ],
   },
 ];

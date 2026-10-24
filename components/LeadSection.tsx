@@ -36,9 +36,7 @@ const copy = {
 
 export default function LeadSection({ lang = 'en' }: { lang?: Locale }) {
   const t = copy[lang];
-  const options = lang === 'ar'
-    ? servicesAr.map((s) => ({ value: s.title, label: s.title }))
-    : [...services, ...servicePages].map((s) => ({ value: s.title, label: s.title }));
+  const options = servicePages.map((s) => ({ value: s.title, label: s.title }));
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [error, setError] = useState('');
   const startedAt = useRef(0);

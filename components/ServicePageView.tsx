@@ -3,13 +3,14 @@ import PageHero from '@/components/PageHero';
 import { ArrowIcon, CheckIcon } from '@/components/Icons';
 import { services } from '@/lib/data';
 import { servicePages, type ServicePage } from '@/lib/service-pages';
+import { touristFlagHref } from '@/lib/destinations';
 import { siteConfig } from '@/lib/site-config';
 import LeadSection from '@/components/LeadSection';
 
 const jsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, '\\u003c');
 
 export default function ServicePageView({ page }: { page: ServicePage }) {
-  const url = `${siteConfig.url}/services/${page.slug}`;
+  const url = `${siteConfig.url}${page.path ?? `/services/${page.slug}`}`;
   const structured = [
     {
       '@context': 'https://schema.org',
@@ -56,6 +57,21 @@ export default function ServicePageView({ page }: { page: ServicePage }) {
             <article className="article-content">
               <h2>Overview</h2>
               {page.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+
+              {page.destinations && (
+                <>
+                  <h2>Destinations we cover</h2>
+                  <div className="flag-grid">
+                    {page.destinations.map((d) => (
+                      <Link className="flag-card" key={d.name} href={`/visa/global-tourist-visa/${touristFlagHref[d.flag]}`}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={`/assets/flags/${d.flag}.svg`} alt="" width={48} height={32} loading="lazy" />
+                        <span>{d.name}</span>
+                      </Link>
+                    )) }
+                  </div>
+                </>
+              )}
 
               <h2>Who this is for</h2>
               <ul>{page.whoFor.map((item) => <li key={item}>{item}</li>)}</ul>

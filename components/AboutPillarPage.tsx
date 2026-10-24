@@ -51,7 +51,7 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     values: {
-      title: "Migrantly's Ethics & Principles",
+      title: 'Our Ethics & Principles',
       label: 'About Us',
       metaTitle: "Migrantly's Ethics & Principles — Integrity, Transparency, Excellence",
       metaDescription: 'Integrity, transparency and excellence guide every Migrantly case. Learn the values behind how we treat clients and handle applications.',

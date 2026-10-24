@@ -70,7 +70,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
               <div className="card-grid" style={{ marginTop: '24px' }}>
                 {service.programs.map((program, idx) => (
-                  <Link key={idx} href={`/programs/${program.slug}`} className="program-detail-box" style={{ textDecoration: 'none' }}>
+                  <Link key={idx} href="/free-assessment" className="program-detail-box" style={{ textDecoration: 'none' }}>
                     <h3 style={{ marginBottom: '12px' }}>{program.name}</h3>
                     <p style={{ color: 'var(--muted)', fontSize: '14px' }}>View general program information</p>
                   </Link>

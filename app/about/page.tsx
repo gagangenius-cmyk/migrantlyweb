@@ -61,7 +61,6 @@ export default function AboutPage() {
                 <li><Link href="/about" className="sidebar-link active">About Us</Link></li>
                 <li><Link href="/services" className="sidebar-link">Services</Link></li>
                 <li><Link href="/countries" className="sidebar-link">Countries</Link></li>
-                <li><Link href="/programs" className="sidebar-link">Programs</Link></li>
                 <li><Link href="/news" className="sidebar-link">News</Link></li>
                 <li><Link href="/contact" className="sidebar-link">Contact</Link></li>
               </ul>

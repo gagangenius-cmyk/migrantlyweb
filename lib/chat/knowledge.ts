@@ -1,4 +1,4 @@
-import { countries, news, programs, services } from '@/lib/data';
+import { countries, news, services } from '@/lib/data';
 import { faqs, faqCategories } from '@/lib/faqs';
 import { servicePages } from '@/lib/service-pages';
 import { tools } from '@/lib/tools/registry';
@@ -15,7 +15,6 @@ function build(): Chunk[] {
   for (const s of services) chunks.push({ title: s.title, url: `/services/${s.slug}`, text: `${s.title}. ${s.tagline}. ${s.description} We handle: ${s.features.join('; ')}. Popular programs: ${s.programs.map((p) => `${p.name} (${p.processing}, ${p.cost})`).join('; ')}.` });
   for (const s of servicePages) chunks.push({ title: s.title, url: `/services/${s.slug}`, text: `${s.title}. ${s.description} ${s.intro.join(' ')} Who it is for: ${s.whoFor.join('; ')}. We handle: ${s.features.join('; ')}. Documents usually needed: ${s.documents.join('; ')}. ${s.faqs.map((f) => `${f.q} ${f.a}`).join(' ')}` });
   for (const c of countries) chunks.push({ title: c.name, url: `/countries/${c.slug}`, text: `${c.name}. ${c.tagline}. ${c.description} Programs: ${c.programs.join('; ')}. Key facts: ${c.stats.map((st) => `${st.label} ${st.value}`).join('; ')}.` });
-  for (const p of programs) chunks.push({ title: p.name, url: `/programs/${p.slug}`, text: `${p.name} (${p.country}, ${p.type}). ${p.description} Processing: ${p.processing}. Cost: ${p.cost}. Requirements: ${p.requirements.join('; ')}. Steps: ${p.steps.join('; ')}.` });
   for (const n of news) chunks.push({ title: n.title, url: `/news/${n.slug}`, text: `${n.title}. ${n.description} ${n.content}` });
   for (const f of faqs) chunks.push({ title: f.q, url: '/faq', text: `${faqCategories.find((c) => c.key === f.category)?.label}: ${f.q} ${f.a}` });
   for (const t of tools) chunks.push({ title: t.name, url: `/tools/${t.slug}`, text: `${t.name}. ${t.summary} System: ${t.system}. Use the calculator on this page to estimate your score.` });

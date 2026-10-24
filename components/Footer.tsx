@@ -7,8 +7,8 @@ export default function Footer({ lang = 'en' }: { lang?: Locale }) {
   const t = localeCopy[lang];
   const emailUrl = buildEmailUrl(lang);
   const services = ar
-    ? [['تأشيرات العمالة الماهرة', 'skilled-visas'], ['هجرة الأعمال', 'business-immigration'], ['تأشيرات الأسرة', 'family-visas'], ['تأشيرات الدراسة', 'study-visas']]
-    : [['Skilled Visas', 'skilled-visas'], ['Business Immigration', 'business-immigration'], ['Family Visas', 'family-visas'], ['Study Visas', 'study-visas']];
+    ? [['الإقامة الدائمة', 'permanent-residence'], ['الجنسية بالاستثمار', 'citizenship-by-investment'], ['تأشيرة الطالب', 'student-visa'], ['كفالة الأسرة', 'family-sponsorship']]
+    : [['Permanent Residence', 'permanent-residence'], ['Citizenship by Investment', 'citizenship-by-investment'], ['Student Visa', 'student-visa'], ['Family Sponsor & Dependent Visa', 'family-sponsorship']];
   const countries = ar
     ? [['كندا', 'canada'], ['أستراليا', 'australia'], ['المملكة المتحدة', 'united-kingdom'], ['الولايات المتحدة', 'united-states']]
     : [['Canada', 'canada'], ['Australia', 'australia'], ['United Kingdom', 'united-kingdom'], ['United States', 'united-states']];

@@ -103,7 +103,7 @@ export default function Home() {
                     {heroMode === 'tourist' ? (<><option value="" disabled>Stay Duration</option><option value="up-to-15">Up to 15 days</option><option value="up-to-30">Up to 30 days</option><option value="up-to-90">Up to 90 days</option><option value="over-90">Over 90 days</option></>) : (<><option value="" disabled>Investment Range</option><option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option></>)}
                   </select>
                 </div>
-                <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/programs?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">
+                <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/free-assessment?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">
                   Search Programs
                   <ArrowIcon />
                 </Link>
@@ -136,7 +136,7 @@ export default function Home() {
                   {heroMode === 'tourist' ? (<><option value="" disabled>Stay Duration</option><option value="up-to-15">Up to 15 days</option><option value="up-to-30">Up to 30 days</option><option value="up-to-90">Up to 90 days</option><option value="over-90">Over 90 days</option></>) : (<><option value="" disabled>Investment</option><option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option></>)}
                 </select>
               </div>
-              <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/programs?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">Search<ArrowIcon /></Link>
+              <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/free-assessment?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">Search<ArrowIcon /></Link>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function Home() {
           </div>
 
           <div className="featured-grid">
-            <Link href="/programs/canada-skilled-immigration" className="featured-item card">
+            <Link href="/tools/canada-express-entry-crs" className="featured-item card">
               <Image width={900} height={600} className="featured-item-image" src="/assets/countries/canada.webp" alt="Canada landscape" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">Canada Skilled Immigration</h3>
@@ -167,7 +167,7 @@ export default function Home() {
               </div>
             </Link>
 
-            <Link href="/programs/australia-skilled-immigration" className="featured-item card">
+            <Link href="/tools/australia-points-test" className="featured-item card">
               <Image width={900} height={600} className="featured-item-image" src="/assets/countries/australia.webp" alt="Australia landscape" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">Australia Skilled Immigration</h3>

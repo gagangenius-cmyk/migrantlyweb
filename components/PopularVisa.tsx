@@ -15,7 +15,7 @@ const codes: Record<string, string> = { canada: 'CA', australia: 'AU', 'united-k
 
 export default function PopularVisa({ lang = 'en' }: { lang?: Locale }) {
   const t = copy[lang];
-  const list = lang === 'ar' ? countriesAr : countries;
+  const list = (lang === 'ar' ? countriesAr : countries).filter((c) => c.slug !== 'new-zealand' && c.slug !== 'caribbean');
 
   return (
     <section className="dest">

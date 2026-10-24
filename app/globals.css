@@ -4177,3 +4177,29 @@ h1, h2, h3, h4, h5, h6 { color: var(--heading); }
 .arches__credits { margin: 36px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; text-align: center; }
 .arches__credits a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .arches__credits a:hover { color: var(--gold-text); }
+
+/* Services dropdown: country flyouts (sub-sub menu) */
+.nav-bar__dropdown--flyout { overflow: visible; max-height: none; min-width: 300px; }
+.nav-bar__dropdown li.has-sub { position: relative; }
+.nav-bar__dropdown li.has-sub > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.nav-bar__sub { list-style: none; margin: 0; padding: 8px 0; position: absolute; top: -9px; inset-inline-start: 100%; min-width: 210px; display: none; background: var(--surface); color: var(--strong-text); border: 1px solid var(--border); border-top: 3px solid var(--logo-gold); border-radius: 0 12px 12px 12px; box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16); z-index: 80; }
+.nav-bar__dropdown li.has-sub:hover > .nav-bar__sub, .nav-bar__dropdown li.has-sub:focus-within > .nav-bar__sub { display: block; }
+.nav-bar__sub a { display: block; padding: 9px 20px; font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: 0; white-space: nowrap; }
+.nav-bar__sub a:hover { background: var(--hover-tint); color: var(--gold-text); padding-inline-start: 20px; }
+.nav-bar__dropdown li.has-sub:hover > a { background: var(--hover-tint); color: var(--gold-text); }
+[dir="rtl"] .nav-bar__dropdown li.has-sub > a svg { transform: scaleX(-1); }
+
+/* Destination flags */
+.flag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin: 18px 0 8px; }
+.flag-card { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+.flag-card:hover { transform: translateY(-3px); border-color: var(--logo-gold); box-shadow: 0 12px 26px rgba(var(--logo-navy-rgb), 0.12); }
+.flag-card img { width: 48px; height: 32px; flex: none; object-fit: cover; border-radius: 4px; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12); }
+
+/* Careers */
+.careers { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.careers h2 { margin: 0 0 20px; font-size: 28px; font-weight: 500; }
+.careers__reasons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.careers__mail { margin-top: 24px; color: var(--muted); }
+.careers__mail a { color: var(--gold-text); text-decoration: underline; }
+.careers-form select { width: 100%; height: 46px; padding: 0 14px; border: 1px solid #e6d4d0; border-radius: 2px; background: #fff; color: #111; font: inherit; font-size: 15px; }
+@media (max-width: 900px) { .careers { grid-template-columns: 1fr; } .careers__reasons { grid-template-columns: 1fr; } }

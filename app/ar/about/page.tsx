@@ -58,7 +58,6 @@ export default function ArAboutPage() {
                 <li><Link href="/ar/about" className="sidebar-link active">من نحن</Link></li>
                 <li><Link href="/ar/services" className="sidebar-link">الخدمات</Link></li>
                 <li><Link href="/ar/countries" className="sidebar-link">الدول</Link></li>
-                <li><Link href="/ar/programs" className="sidebar-link">البرامج</Link></li>
                 <li><Link href="/ar/news" className="sidebar-link">الأخبار</Link></li>
                 <li><Link href="/ar/contact" className="sidebar-link">اتصل بنا</Link></li>
               </ul>
