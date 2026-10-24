@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
 import HeroSlides from '@/components/HeroSlides';
 import PopularVisa from '@/components/PopularVisa';
+import BestForImmigration from '@/components/BestForImmigration';
 import VisionMission from '@/components/VisionMission';
 import { pathways, news, ui } from '@/lib/data-ar';
 
@@ -110,7 +111,7 @@ export default function ArHome() {
 
           <div className="featured-grid">
             <Link href="/ar/programs/canada-skilled-immigration" className="featured-item card">
-              <Image width={900} height={600} className="featured-item-image" src="/assets/images/1503614472-8c93d56e92ce.webp" alt="كندا" />
+              <Image width={900} height={600} className="featured-item-image" src="/assets/countries/canada.webp" alt="كندا" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">الهجرة الماهرة – كندا</h3>
                 <span className="featured-item-tag">مفتوح</span>
@@ -125,7 +126,7 @@ export default function ArHome() {
             </Link>
 
             <Link href="/ar/programs/australia-skilled-immigration" className="featured-item card">
-              <Image width={900} height={600} className="featured-item-image" src="/assets/images/1506744038136-46273834b3fb.webp" alt="أستراليا" />
+              <Image width={900} height={600} className="featured-item-image" src="/assets/countries/australia.webp" alt="أستراليا" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">الهجرة الماهرة – أستراليا</h3>
                 <span className="featured-item-tag">مفتوح</span>
@@ -143,6 +144,8 @@ export default function ArHome() {
       </section>
 
       <PopularVisa lang="ar" />
+
+      <BestForImmigration lang="ar" />
 
       <VisionMission lang="ar" />
 

@@ -53,9 +53,9 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     {
       key: 'about', href: '/about', label: t.about,
       children: [
-        { href: '/about/vision', label: lang === 'ar' ? 'رؤيتنا' : 'Vision' },
-        { href: '/about/mission', label: lang === 'ar' ? 'مهمتنا' : 'Mission' },
-        { href: '/about/values', label: lang === 'ar' ? 'قيمنا' : 'Values' },
+        { href: '/about/vision', label: lang === 'ar' ? 'ما فتحناه' : 'What We Unlocked' },
+        { href: '/about/mission', label: lang === 'ar' ? 'كيف نواصل الفتح' : 'How We Keep Unlocking' },
+        { href: '/about/values', label: lang === 'ar' ? 'أخلاقيات ومبادئ ميجرانتلي' : "Migrantly's Ethics & Principles" },
       ],
     },
   ];

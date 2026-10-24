@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
 import HeroSlides from '@/components/HeroSlides';
 import PopularVisa from '@/components/PopularVisa';
+import BestForImmigration from '@/components/BestForImmigration';
 import VisionMission from '@/components/VisionMission';
 import { pathways } from '@/lib/data';
 
@@ -152,7 +153,7 @@ export default function Home() {
 
           <div className="featured-grid">
             <Link href="/programs/canada-skilled-immigration" className="featured-item card">
-              <Image width={900} height={600} className="featured-item-image" src="/assets/images/1503614472-8c93d56e92ce.webp" alt="Canada landscape" />
+              <Image width={900} height={600} className="featured-item-image" src="/assets/countries/canada.webp" alt="Canada landscape" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">Canada Skilled Immigration</h3>
                 <span className="featured-item-tag">Open</span>
@@ -167,7 +168,7 @@ export default function Home() {
             </Link>
 
             <Link href="/programs/australia-skilled-immigration" className="featured-item card">
-              <Image width={900} height={600} className="featured-item-image" src="/assets/images/1506744038136-46273834b3fb.webp" alt="Australia landscape" />
+              <Image width={900} height={600} className="featured-item-image" src="/assets/countries/australia.webp" alt="Australia landscape" />
               <div className="featured-item-header">
                 <h3 className="featured-item-title">Australia Skilled Immigration</h3>
                 <span className="featured-item-tag">Open</span>
@@ -185,6 +186,8 @@ export default function Home() {
       </section>
 
       <PopularVisa />
+
+      <BestForImmigration />
 
       <VisionMission />
 

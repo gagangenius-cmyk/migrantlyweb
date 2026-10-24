@@ -4,6 +4,7 @@ import type { CSSProperties } from 'react';
 import { countries } from '@/lib/data';
 import { countries as countriesAr } from '@/lib/data-ar';
 import { localizedPath, type Locale } from '@/lib/site-config';
+import { photoCredits } from '@/lib/photo-credits';
 
 const copy = {
   en: { label: 'Destinations', title: 'Popular Visa Destinations', readMore: 'Read more' },
@@ -39,11 +40,28 @@ export default function PopularVisa({ lang = 'en' }: { lang?: Locale }) {
                 <span className="dest__more">{t.readMore}<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3l16 9-16 9z" /></svg></span>
               </Link>
               <Link href={href} className="dest__tile dest__photo" style={style} tabIndex={-1} aria-hidden="true">
-                <Image src={country.image} alt="" fill sizes="(max-width: 700px) 100vw, 25vw" />
+                <Image src={`/assets/countries/${country.slug}.webp`} alt="" fill sizes="(max-width: 700px) 100vw, 25vw" />
               </Link>
             </div>
           );
         })}
+      </div>
+      <div className="container">
+        <p className="arches__credits">
+          {lang === 'ar' ? 'الصور: ' : 'Photos: '}
+          {list.map((country, i) => {
+            const c = photoCredits[country.slug];
+            if (!c) return null;
+            return (
+              <span key={country.slug}>
+                {i > 0 && ' · '}
+                <a href={c.source} target="_blank" rel="noopener noreferrer">{country.name}</a>
+                {' '}({c.author ? `${c.author}, ` : ''}{c.license})
+              </span>
+            );
+          })}
+          {lang === 'ar' ? ' — ويكيميديا كومنز' : ' — Wikimedia Commons'}
+        </p>
       </div>
     </section>
   );

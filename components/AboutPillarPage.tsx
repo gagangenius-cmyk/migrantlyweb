@@ -19,9 +19,9 @@ interface PillarCopy {
 const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
   en: {
     vision: {
-      title: 'Our Vision',
+      title: 'What We Unlocked',
       label: 'About Us',
-      metaTitle: 'Our Vision — Clear, Accessible Immigration',
+      metaTitle: 'What We Unlocked — Clear, Accessible Immigration',
       metaDescription: 'Migrantly’s vision is to make immigration clear and accessible for everyone, and to be a benchmark for trust, compliance and client success.',
       lead: 'To make immigration clear and accessible for everyone by becoming a benchmark for trust, compliance and client success.',
       paragraphs: [
@@ -35,9 +35,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     mission: {
-      title: 'Our Mission',
+      title: 'How We Keep Unlocking',
       label: 'About Us',
-      metaTitle: 'Our Mission — World-Class Migration Solutions',
+      metaTitle: 'How We Keep Unlocking — World-Class Migration Solutions',
       metaDescription: 'Migrantly’s mission is to deliver world-class migration solutions for individuals, families and investors through expert guidance and ethical practice.',
       lead: 'To deliver world-class migration solutions for individuals, families and investors through expert guidance and ethical immigration practices.',
       paragraphs: [
@@ -51,9 +51,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     values: {
-      title: 'Our Values',
+      title: "Migrantly's Ethics & Principles",
       label: 'About Us',
-      metaTitle: 'Our Values — Integrity, Transparency, Excellence',
+      metaTitle: "Migrantly's Ethics & Principles — Integrity, Transparency, Excellence",
       metaDescription: 'Integrity, transparency and excellence guide every Migrantly case. Learn the values behind how we treat clients and handle applications.',
       lead: 'Integrity, transparency and excellence in every case: treating every client’s future with the care it deserves.',
       paragraphs: [
@@ -70,9 +70,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
   },
   ar: {
     vision: {
-      title: 'رؤيتنا',
+      title: 'ما فتحناه',
       label: 'من نحن',
-      metaTitle: 'رؤيتنا — هجرة واضحة ومتاحة للجميع',
+      metaTitle: 'ما فتحناه — هجرة واضحة ومتاحة للجميع',
       metaDescription: 'رؤية ميجرانتلي أن تكون الهجرة واضحة ومتاحة للجميع، وأن نكون معياراً للثقة والالتزام ونجاح العملاء.',
       lead: 'أن نجعل الهجرة واضحة ومتاحة للجميع من خلال أن نكون معياراً للثقة والالتزام ونجاح العملاء.',
       paragraphs: [
@@ -86,9 +86,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     mission: {
-      title: 'مهمتنا',
+      title: 'كيف نواصل الفتح',
       label: 'من نحن',
-      metaTitle: 'مهمتنا — حلول هجرة عالمية المستوى',
+      metaTitle: 'كيف نواصل الفتح — حلول هجرة عالمية المستوى',
       metaDescription: 'مهمة ميجرانتلي تقديم حلول هجرة عالمية المستوى للأفراد والأسر والمستثمرين من خلال إرشاد الخبراء وممارسات أخلاقية.',
       lead: 'تقديم حلول هجرة عالمية المستوى للأفراد والأسر والمستثمرين من خلال إرشاد الخبراء وممارسات هجرة أخلاقية.',
       paragraphs: [
@@ -102,9 +102,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     values: {
-      title: 'قيمنا',
+      title: 'أخلاقيات ومبادئ ميجرانتلي',
       label: 'من نحن',
-      metaTitle: 'قيمنا — النزاهة والشفافية والتميز',
+      metaTitle: 'أخلاقيات ومبادئ ميجرانتلي — النزاهة والشفافية والتميز',
       metaDescription: 'النزاهة والشفافية والتميز توجّه كل قضية في ميجرانتلي. تعرّف على القيم التي تحكم تعاملنا مع العملاء.',
       lead: 'النزاهة والشفافية والتميز في كل قضية: نعامل مستقبل كل عميل بالعناية التي يستحقها.',
       paragraphs: [
