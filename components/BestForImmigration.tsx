@@ -53,6 +53,8 @@ export default function BestForImmigration({ lang = 'en' }: { lang?: Locale }) {
                   </ul>
                 </div>
               </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="arch__door" src="/assets/door-arch.webp" alt="" aria-hidden="true" width={900} height={1041} loading="lazy" />
               </div>
               <Link href={place.href.startsWith('/countries') ? localizedPath(lang, place.href) : place.href} className="arch__caption">
                 <strong>{place[lang]}</strong>
