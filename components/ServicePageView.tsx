@@ -3,7 +3,7 @@ import PageHero from '@/components/PageHero';
 import { ArrowIcon, CheckIcon } from '@/components/Icons';
 import { services } from '@/lib/data';
 import { servicePages, type ServicePage } from '@/lib/service-pages';
-import { touristFlagHref } from '@/lib/destinations';
+import { displayName, flagFor, menuServices } from '@/lib/destinations';
 import { siteConfig } from '@/lib/site-config';
 import LeadSection from '@/components/LeadSection';
 
@@ -38,6 +38,7 @@ export default function ServicePageView({ page }: { page: ServicePage }) {
     },
   ];
 
+  const cards = menuServices.find((m) => m.slug === page.slug);
   const all = [...services.map((s) => ({ slug: s.slug, title: s.title })), ...servicePages.map((s) => ({ slug: s.slug, title: s.title }))];
 
   return (
@@ -58,17 +59,26 @@ export default function ServicePageView({ page }: { page: ServicePage }) {
               <h2>Overview</h2>
               {page.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
 
-              {page.destinations && (
+              {cards && (
                 <>
-                  <h2>Destinations we cover</h2>
-                  <div className="flag-grid">
-                    {page.destinations.map((d) => (
-                      <Link className="flag-card" key={d.name} href={`/visa/global-tourist-visa/${touristFlagHref[d.flag]}`}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={`/assets/flags/${d.flag}.svg`} alt="" width={48} height={32} loading="lazy" />
-                        <span>{d.name}</span>
-                      </Link>
-                    )) }
+                  <h2>{cards.kind === 'test' ? 'Tests we coach' : 'Where we can help'}</h2>
+                  <div className="dest-cards">
+                    {cards.items.map((item) => {
+                      const flag = flagFor(item);
+                      return (
+                        <div className="dest-cards__card" key={item}>
+                          <div className="dest-cards__img">
+                            {flag ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={`/assets/flags/${flag}.svg`} alt="" loading="lazy" />
+                            ) : (
+                              <span>{item.slice(0, 5)}</span>
+                            )}
+                          </div>
+                          <p>{displayName(item)}</p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </>
               )}

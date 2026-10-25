@@ -2,13 +2,14 @@ import type { Locale } from '@/lib/site-config';
 
 const copy = {
   en: {
-    eyebrow: 'Why Migrantly.ae?', sub: 'Who we are & what we do.', pill: 'Your trusted migration partner',
+    eyebrow: 'Why Migrantly.ae?', // Sample wording for now; replace with the final copy.
+    sub: 'Honest advice, clear next steps and one dedicated team from your first question to your arrival. We explain every route in plain language so you can decide with confidence.', pill: 'Your trusted migration partner',
     title: 'Navigate Your Future, Globally', lead: 'Trusted guidance for your immigration journey — clear, compliant, and confidence-driven.',
     who: 'Who We Are', whoText: 'Migrantly is more than a visa company — we are your migration partner.',
     what: 'What We Do', whatText: 'We turn immigration confusion into a clear journey for Canada, Australia, UK, New Zealand, South Africa, USA.',
   },
   ar: {
-    eyebrow: 'لماذا Migrantly.ae؟', sub: 'من نحن وماذا نفعل.', pill: 'شريكك الموثوق في الهجرة',
+    eyebrow: 'لماذا Migrantly.ae؟', sub: 'نصيحة صادقة وخطوات واضحة وفريق واحد يرافقك من سؤالك الأول حتى وصولك. نشرح كل مسار بلغة بسيطة لتقرر بثقة.', pill: 'شريكك الموثوق في الهجرة',
     title: 'اصنع مستقبلك عالمياً', lead: 'إرشاد موثوق لرحلة هجرتك — واضح وملتزم ويمنحك الثقة.',
     who: 'من نحن', whoText: 'ميجرانتلي أكثر من شركة تأشيرات — نحن شريكك في الهجرة.',
     what: 'ماذا نفعل', whatText: 'نحوّل حيرة الهجرة إلى رحلة واضحة إلى كندا وأستراليا والمملكة المتحدة ونيوزيلندا وجنوب أفريقيا والولايات المتحدة.',

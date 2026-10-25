@@ -8,7 +8,6 @@ import { localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 import { services, countries } from '@/lib/data';
 import { toolLinks } from '@/lib/tools/registry';
 import { servicePages } from '@/lib/service-pages';
-import { destinationHref } from '@/lib/destinations';
 import { services as servicesAr, countries as countriesAr } from '@/lib/data-ar';
 
 // Demo number until the real line is added to siteConfig.publicContact.phone
@@ -19,11 +18,10 @@ const ctaCopy = {
   ar: { book: 'احجز استشارة', call: 'تواصل خلال دقيقتين' },
 } as const;
 
-type Child = { href: string; label: string; sub?: { href: string; label: string }[] };
+type Child = { href: string; label: string };
 type Item = { key: string; href: string; label: string; children?: Child[]; localized?: boolean };
 
 
-const flyout = (service: string, names: string[]) => names.map((label) => ({ label, href: destinationHref(service.split('/').pop() as string, label) }));
 
 export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
   const pathname = usePathname();
@@ -42,15 +40,15 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     {
       key: 'services', href: '/services', label: t.services,
       children: [
-        { href: '/services/permanent-residence', label: 'Permanent Residence', sub: flyout('/services/permanent-residence', ['Canada', 'Australia', 'UK', 'New Zealand']) },
-        { href: '/services/global-tourist-visa', label: 'Global Tourist Visa', sub: flyout('/services/global-tourist-visa', ['UK', 'USA', 'Canada', 'Australia', 'NZ', 'Europe', 'China', 'Japan', 'Montenegro', 'South Africa', 'Brazil', 'Argentina']) },
-        { href: '/services/student-visa', label: 'Student Visa', sub: flyout('/services/student-visa', ['UK', 'USA', 'Canada', 'Australia', 'Ireland', 'New Zealand', 'Europe']) },
-        { href: '/services/citizenship-by-investment', label: 'Citizenship by Investment', sub: flyout('/services/citizenship-by-investment', ['Dominica', 'Antigua & Barbuda', 'Grenada', 'Saint Lucia', 'Saint Kitts & Nevis', 'Turkey', 'São Tomé & Príncipe']) },
-        { href: '/services/residence-by-investment', label: 'Residence by Investment', sub: flyout('/services/residence-by-investment', ['Greece', 'Portugal', 'Italy', 'Cyprus', 'Malta', 'Turkey', 'United States', 'Canada', 'Panama']) },
-        { href: '/services/family-sponsorship', label: 'Family Sponsor & Dependent Visa', sub: flyout('/services/family-sponsorship', ['Canada', 'Australia', 'UK', 'USA', 'Ireland', 'NZ', 'Europe']) },
+        { href: '/services/permanent-residence', label: 'Permanent Residence' },
+        { href: '/services/global-tourist-visa', label: 'Global Tourist Visa' },
+        { href: '/services/student-visa', label: 'Student Visa' },
+        { href: '/services/citizenship-by-investment', label: 'Citizenship by Investment' },
+        { href: '/services/residence-by-investment', label: 'Residence by Investment' },
+        { href: '/services/family-sponsorship', label: 'Family Sponsor & Dependent Visa' },
         { href: '/services/germany-opportunity-card', label: 'Germany Opportunity Card' },
-        { href: '/services/language-coaching', label: 'Language Coaching', sub: flyout('/services/language-coaching', ['IELTS', 'PTE', 'CELPIP', 'German']) },
-        { href: '/services/job-offers-work-permit', label: 'Job Offers & Work Permit', sub: flyout('/services/job-offers-work-permit', ['Europe']) },
+        { href: '/services/language-coaching', label: 'Language Coaching' },
+        { href: '/services/job-offers-work-permit', label: 'Job Offers & Work Permit' },
       ],
     },
     {
@@ -114,20 +112,12 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
                 )}
               </div>
               {item.children && isOpen && (
-                <ul className={`nav-bar__dropdown${item.children.some((c) => c.sub) ? ' nav-bar__dropdown--flyout' : ''}`}>
+                <ul className={`nav-bar__dropdown`}>
                   {item.children.map((child) => (
-                    <li key={child.href} className={child.sub ? 'has-sub' : undefined}>
+                    <li key={child.href}>
                       <Link href={item.localized === false || child.href.startsWith('/careers') ? child.href : localizedPath(lang, child.href)} onClick={() => setOpen(null)}>
                         {child.label}
-                        {child.sub && <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>}
                       </Link>
-                      {child.sub && (
-                        <ul className="nav-bar__sub">
-                          {child.sub.map((s) => (
-                            <li key={s.label}><Link href={s.href} onClick={() => setOpen(null)}>{s.label}</Link></li>
-                          ))}
-                        </ul>
-                      )}
                     </li>
                   ))}
                   <li className="nav-bar__dropdown-all">

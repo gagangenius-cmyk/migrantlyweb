@@ -4299,3 +4299,16 @@ h1, h2, h3, h4, h5, h6 { color: var(--heading); }
 @keyframes hero-swap { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 .hero-slides__caption { display: none; }
 @media (prefers-reduced-motion: reduce) { .home-hero__swap { animation: none; } }
+
+/* Why Migrantly: short paragraph instead of the bold sub-heading */
+.why__sub { max-width: 640px; margin: 0 auto 40px; color: var(--muted); font-size: 18px; font-weight: 400; line-height: 1.65; }
+
+/* Destination cards (no pages behind them) */
+.dest-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 16px; margin: 18px 0 8px; }
+.dest-cards__card { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+.dest-cards__card:hover { transform: translateY(-4px); border-color: var(--logo-gold); box-shadow: 0 14px 30px rgba(var(--logo-navy-rgb), 0.14); }
+.dest-cards__img { display: flex; align-items: center; justify-content: center; aspect-ratio: 3 / 2; background: var(--surface-2); }
+.dest-cards__img img { width: 100%; height: 100%; object-fit: cover; }
+.dest-cards__img span { color: var(--logo-navy); font-size: 28px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+[data-theme="dark"] .dest-cards__img span { color: var(--logo-gold-light); }
+.dest-cards__card p { margin: 0; padding: 14px 16px; font-size: 15px; font-weight: 700; text-align: center; color: var(--heading); }

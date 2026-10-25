@@ -10,6 +10,7 @@ const nextConfig = {
       to('/services/family-visas', '/services/family-sponsorship'), to('/services/study-visas', '/services/student-visa'),
       to('/services/citizenship', '/services/citizenship-by-investment'), to('/services/visit-visas', '/services/global-tourist-visa'),
       to('/services/dependent-visa', '/services/family-sponsorship'), to('/services/business-visa', '/services'), to('/services/temporary-visa', '/services'),
+      to('/visa/:service/:country', '/services/:service'), to('/ar/visa/:service/:country', '/services/:service'),
       to('/ar/services', '/services'), to('/ar/services/:slug', '/services/:slug'),
     ];
   },
