@@ -5,9 +5,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
 import HeroSlides from '@/components/HeroSlides';
+import HeroHeadline from '@/components/HeroHeadline';
 import PopularVisa from '@/components/PopularVisa';
 import BestForImmigration from '@/components/BestForImmigration';
 import VisionMission from '@/components/VisionMission';
+import WhyMigrantly from '@/components/WhyMigrantly';
+import AppointmentSection from '@/components/AppointmentSection';
 import { pathways, news, ui } from '@/lib/data-ar';
 
 export default function ArHome() {
@@ -26,8 +29,7 @@ export default function ArHome() {
         <div className="home-hero__desktop">
           <div className="home-hero__content">
             <div className="home-hero__headline">
-              <h1 className="home-hero__title">عالمك، <span className="home-hero__accent">مفتوح</span></h1>
-              <p className="home-hero__description">متخصصون في الإقامة الدائمة والجنسية والتأشيرات العالمية</p>
+              <HeroHeadline lang="ar" />
             </div>
 
             <div className="home-hero-search--desktop">
@@ -100,6 +102,9 @@ export default function ArHome() {
         </div>
       </section>
 
+      <VisionMission lang="ar" />
+
+      {/* Popular programs (hidden for now; remove these comment markers to show it again)
       <section className="featured-section">
         <div className="container">
           <div className="featured-header">
@@ -142,13 +147,18 @@ export default function ArHome() {
           </div>
         </div>
       </section>
+      */}
 
-      <PopularVisa lang="ar" />
+      {/* Popular Visa Destinations (hidden for now; remove the comment markers to show it again) */}
+      {/* <PopularVisa lang="ar" /> */}
 
       <BestForImmigration lang="ar" />
 
-      <VisionMission lang="ar" />
+      <WhyMigrantly lang="ar" />
 
+      <AppointmentSection lang="ar" />
+
+      {/* About us (hidden for now; remove these comment markers to show it again)
       <section className="about-section">
         <div className="about-wrapper">
           <div className="about-content container">
@@ -163,6 +173,7 @@ export default function ArHome() {
           </div>
         </div>
       </section>
+      */}
 
       <section className="pathways-section">
         <div className="container">
@@ -208,6 +219,7 @@ export default function ArHome() {
           </div>
         </div>
       </section>
+
     </>
   );
 }

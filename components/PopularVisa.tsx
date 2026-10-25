@@ -4,7 +4,6 @@ import type { CSSProperties } from 'react';
 import { countries } from '@/lib/data';
 import { countries as countriesAr } from '@/lib/data-ar';
 import { localizedPath, type Locale } from '@/lib/site-config';
-import { photoCredits } from '@/lib/photo-credits';
 
 const copy = {
   en: { label: 'Destinations', title: 'Popular Visa Destinations', readMore: 'Read more' },
@@ -47,21 +46,7 @@ export default function PopularVisa({ lang = 'en' }: { lang?: Locale }) {
         })}
       </div>
       <div className="container">
-        <p className="arches__credits">
-          {lang === 'ar' ? 'الصور: ' : 'Photos: '}
-          {list.map((country, i) => {
-            const c = photoCredits[country.slug];
-            if (!c) return null;
-            return (
-              <span key={country.slug}>
-                {i > 0 && ' · '}
-                <a href={c.source} target="_blank" rel="noopener noreferrer">{country.name}</a>
-                {' '}({c.author ? `${c.author}, ` : ''}{c.license})
-              </span>
-            );
-          })}
-          {lang === 'ar' ? ' — ويكيميديا كومنز' : ' — Wikimedia Commons'}
-        </p>
+
       </div>
     </section>
   );

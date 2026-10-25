@@ -5,9 +5,12 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
 import HeroSlides from '@/components/HeroSlides';
+import HeroHeadline from '@/components/HeroHeadline';
 import PopularVisa from '@/components/PopularVisa';
 import BestForImmigration from '@/components/BestForImmigration';
 import VisionMission from '@/components/VisionMission';
+import WhyMigrantly from '@/components/WhyMigrantly';
+import AppointmentSection from '@/components/AppointmentSection';
 import { pathways } from '@/lib/data';
 
 const news = [
@@ -58,8 +61,7 @@ export default function Home() {
         <div className="home-hero__desktop">
           <div className="home-hero__content">
             <div className="home-hero__headline">
-              <h1 className="home-hero__title">Your world, <span className="home-hero__accent">Unlocked</span></h1>
-              <p className="home-hero__description">Specialized in Permanent Residency, Citizenship &amp; Global Visas</p>
+              <HeroHeadline />
             </div>
 
             <div className="home-hero-search--desktop">
@@ -142,6 +144,9 @@ export default function Home() {
         </div>
       </section>
 
+      <VisionMission />
+
+      {/* Popular programs (hidden for now; remove these comment markers to show it again)
       <section className="featured-section">
         <div className="container">
           <div className="featured-header">
@@ -184,13 +189,18 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
-      <PopularVisa />
+      {/* Popular Visa Destinations (hidden for now; remove the comment markers to show it again) */}
+      {/* <PopularVisa /> */}
 
       <BestForImmigration />
 
-      <VisionMission />
+      <WhyMigrantly />
 
+      <AppointmentSection />
+
+      {/* About us (hidden for now; remove these comment markers to show it again)
       <section className="about-section">
         <div className="about-wrapper">
           <div className="about-content container">
@@ -205,6 +215,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      */}
 
       <section className="pathways-section">
         <div className="container">
@@ -250,6 +261,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
     </>
   );
 }

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { localizedPath, type Locale } from '@/lib/site-config';
-import { photoCredits } from '@/lib/photo-credits';
 
 type Opt = { key: string; en: string; ar: string; href: string };
 
@@ -42,6 +41,7 @@ export default function BestForImmigration({ lang = 'en' }: { lang?: Locale }) {
         <div className="arches__grid">
           {places.map((place, index) => (
             <article className="arch" key={place.slug}>
+              <div className="arch__stone">
               <div className="arch__frame">
                 <Image src={place.image} alt="" fill sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 22vw" className="arch__img" />
                 <div className="arch__panel">
@@ -53,29 +53,15 @@ export default function BestForImmigration({ lang = 'en' }: { lang?: Locale }) {
                   </ul>
                 </div>
               </div>
+              </div>
               <Link href={place.href.startsWith('/countries') ? localizedPath(lang, place.href) : place.href} className="arch__caption">
-                <span className="arch__no">{String(index + 1).padStart(2, '0')}</span>
                 <strong>{place[lang]}</strong>
                 <small>{place.note[lang]}</small>
               </Link>
             </article>
           ))}
         </div>
-        <p className="arches__credits">
-          {lang === 'ar' ? 'الصور: ' : 'Photos: '}
-          {places.map((place, i) => {
-            const c = photoCredits[place.slug];
-            if (!c) return null;
-            return (
-              <span key={place.slug}>
-                {i > 0 && ' · '}
-                <a href={c.source} target="_blank" rel="noopener noreferrer">{place.en}</a>
-                {' '}({c.author ? `${c.author}, ` : ''}{c.license})
-              </span>
-            );
-          })}
-          {lang === 'ar' ? ' — ويكيميديا كومنز' : ' — Wikimedia Commons'}
-        </p>
+
       </div>
     </section>
   );

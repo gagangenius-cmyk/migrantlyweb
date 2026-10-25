@@ -1,6 +1,6 @@
 export interface PhotoCredit { title: string; author: string; license: string; licenseUrl: string; source: string }
 
-/** Photos from Wikimedia Commons used on the home page. Keep these credits visible. */
+/** Photos from Wikimedia Commons used on the site. Keep these credits available (see the photo credits note). */
 export const photoCredits: Record<string, PhotoCredit> = {
   "canada": {
     "title": "Moraine Lake 17092005.jpg",
@@ -64,5 +64,19 @@ export const photoCredits: Record<string, PhotoCredit> = {
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Torre_de_Bel%C3%A9m_por_Rodrigo_Tetsuo_Argenton_(2).jpg"
+  },
+  "hero-investment": {
+    "title": "Dubai skyline unsplash.jpg",
+    "author": "Robert Bock",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Dubai_skyline_unsplash.jpg"
+  },
+  "hero-study": {
+    "title": "Radcliffe Camera Oxford 2018 02.jpg",
+    "author": "Julian Herzog (Website)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Radcliffe_Camera_Oxford_2018_02.jpg"
   }
 };
