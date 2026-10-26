@@ -4336,3 +4336,13 @@ h1, h2, h3, h4, h5, h6 { color: var(--heading); }
 .arch__stone .arch__panel { padding: 56px 12px 34px; }
 .arch__stone .arch__panel ul { gap: 6px; }
 .arch__stone .arch__panel a { padding: 7px 10px; }
+
+/* Language switch: 25% smaller */
+@media (min-width: 1025px) {
+  .flag-switch { gap: 8px; padding-inline: 10px; font-size: 10px; }
+  .flag-switch__track { width: 48px; height: 22px; }
+  .flag-switch__flag { top: -2.5px; left: -1.5px; width: 27px; height: 27px; border-width: 1.5px; }
+  .flag-switch__track.is-ar .flag-switch__flag { transform: translateX(22.5px); }
+  .flag-switch__track:hover .flag-switch__flag { transform: translateX(4px); }
+  .flag-switch__track.is-ar:hover .flag-switch__flag { transform: translateX(19px); }
+}
