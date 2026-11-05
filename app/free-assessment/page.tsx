@@ -28,7 +28,7 @@ const commitments = [
   'Transparency: we explain how each score is worked out.',
   'No pressure: you can use the tool without sharing any personal details.',
   'Privacy: your answers stay in your browser, and consultation details are used only to reply to you.',
-  'Objectivity: we tell you honestly when a route is not a good fit.',
+  'Objectivity: we tell you plainly when a route is not a good fit.',
 ];
 
 export default function FreeAssessmentPage() {

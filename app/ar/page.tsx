@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
+import HeroSearch from '@/components/HeroSearch';
 import HeroSlides from '@/components/HeroSlides';
 import HeroHeadline from '@/components/HeroHeadline';
 import PopularVisa from '@/components/PopularVisa';
@@ -14,7 +15,6 @@ import AppointmentSection from '@/components/AppointmentSection';
 import { pathways, news, ui } from '@/lib/data-ar';
 
 export default function ArHome() {
-  const [heroMode, setHeroMode] = useState<'skilled' | 'investor'>('skilled');
   const [activePathway, setActivePathway] = useState(pathways[0].id);
 
   const activePathwayData = pathways.find((p) => p.id === activePathway) || pathways[0];
@@ -32,73 +32,12 @@ export default function ArHome() {
               <HeroHeadline lang="ar" />
             </div>
 
-            <div className="home-hero-search--desktop">
-              <div className="home-hero-search__tabs" data-mode={heroMode}>
-                <button className={heroMode === 'skilled' ? 'active' : ''} onClick={() => setHeroMode('skilled')} type="button">
-                  {ui.home.skilledWorker}
-                </button>
-                <button className={heroMode === 'investor' ? 'active' : ''} onClick={() => setHeroMode('investor')} type="button">
-                  {ui.home.businessInvestor}
-                </button>
-              </div>
-              <form className="home-hero-filter-form" action="/free-assessment" method="get">
-                <input type="hidden" name="mode" value={heroMode} />
-                <div className="home-hero-filter">
-                  <select aria-label={ui.home.destination} name="destination" className="home-hero-filter__select" defaultValue="">
-                    <option value="" disabled>{ui.home.destination}</option>
-                    <option value="all">{ui.home.allDestinations}</option><option value="canada">كندا</option><option value="australia">أستراليا</option><option value="united-kingdom">المملكة المتحدة</option><option value="united-states">الولايات المتحدة</option><option value="european-union">الاتحاد الأوروبي</option><option value="portugal">البرتغال</option>
-                  </select>
-                </div>
-                <div className="home-hero-filter">
-                  <select aria-label={ui.home.programType} name="type" className="home-hero-filter__select" defaultValue="">
-                    <option value="" disabled>{ui.home.programType}</option>
-                    <option value="all">{ui.home.allPrograms}</option><option value="skilled-worker">عامل ماهر</option><option value="business-investor">أعمال ومستثمر</option><option value="study-visa">تأشيرة دراسة</option><option value="citizenship">جنسية</option>
-                  </select>
-                </div>
-                <div className="home-hero-filter">
-                  <select aria-label={ui.home.investmentRange} name="investment" className="home-hero-filter__select" defaultValue="">
-                    <option value="" disabled>{ui.home.investmentRange}</option>
-                    <option value="any">{ui.home.anyRange}</option><option value="under-50000">أقل من 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">أكثر من 250,000</option>
-                  </select>
-                </div>
-                <button type="submit" className="home-hero-search-button">
-                  {ui.home.searchPrograms}
-                  <ArrowIcon />
-                </button>
-              </form>
-            </div>
+            <HeroSearch lang="ar" />
           </div>
         </div>
 
         <div className="home-hero__mobile">
-          <div className="home-hero-search--desktop">
-            <div className="home-hero-search__tabs" data-mode={heroMode}>
-              <button className={heroMode === 'skilled' ? 'active' : ''} onClick={() => setHeroMode('skilled')} type="button">عامل ماهر</button>
-              <button className={heroMode === 'investor' ? 'active' : ''} onClick={() => setHeroMode('investor')} type="button">مستثمر</button>
-            </div>
-            <form className="home-hero-filter-form" action="/free-assessment" method="get">
-              <input type="hidden" name="mode" value={heroMode} />
-              <div className="home-hero-filter">
-                <select aria-label={ui.home.destination} name="destination" className="home-hero-filter__select" defaultValue="">
-                  <option value="" disabled>{ui.home.destination}</option>
-                  <option value="all">{ui.home.allDestinations}</option><option value="canada">كندا</option><option value="australia">أستراليا</option><option value="united-kingdom">المملكة المتحدة</option><option value="united-states">الولايات المتحدة</option><option value="european-union">الاتحاد الأوروبي</option>
-                </select>
-              </div>
-              <div className="home-hero-filter">
-                <select aria-label={ui.home.programType} name="type" className="home-hero-filter__select" defaultValue="">
-                  <option value="" disabled>البرنامج</option>
-                  <option value="all">{ui.home.allPrograms}</option><option value="skilled-worker">عامل ماهر</option><option value="business-investor">أعمال ومستثمر</option><option value="study-visa">تأشيرة دراسة</option>
-                </select>
-              </div>
-              <div className="home-hero-filter">
-                <select aria-label={ui.home.investmentRange} name="investment" className="home-hero-filter__select" defaultValue="">
-                  <option value="" disabled>الاستثمار</option>
-                  <option value="any">{ui.home.anyRange}</option><option value="under-50000">أقل من 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">أكثر من 250,000</option>
-                </select>
-              </div>
-              <button type="submit" className="home-hero-search-button">بحث<ArrowIcon /></button>
-            </form>
-          </div>
+          <HeroSearch lang="ar" />
         </div>
       </section>
 

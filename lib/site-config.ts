@@ -50,3 +50,6 @@ export function buildEmailUrl(locale: Locale) {
   const subject = locale === 'ar' ? 'طلب استشارة هجرة' : 'Immigration consultation enquiry';
   return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
 }
+
+// Demo number until the real line is added to siteConfig.publicContact.phone
+export const DEMO_PHONE = '+971 50 000 0000';

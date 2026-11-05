@@ -19,30 +19,30 @@ interface PillarCopy {
 const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
   en: {
     vision: {
-      title: 'What We Unlocked',
+      title: 'Our Belief',
       label: 'About Us',
-      metaTitle: 'What We Unlocked — Clear, Accessible Immigration',
+      metaTitle: 'Our Belief — Clear, Accessible Immigration',
       metaDescription: 'Migrantly’s vision is to make immigration clear and accessible for everyone, and to be a benchmark for trust, compliance and client success.',
       lead: 'To make immigration clear and accessible for everyone by becoming a benchmark for trust, compliance and client success.',
       paragraphs: [
         'Moving countries is one of the biggest decisions a person or family can make. Too often, the information around it is confusing, out of date or designed to sell rather than to help.',
-        'We want that to change. Our vision is an industry where every applicant understands their options, knows what to expect and is treated with honesty at every step.',
+        'We want that to change. Our vision is an industry where every applicant understands their options, knows what to expect and is treated with respect at every step.',
       ],
       points: [
-        { title: 'Clarity first', text: 'Plain language, honest timelines and no hidden steps.' },
+        { title: 'Clarity first', text: 'Plain language, realistic timelines and no hidden steps.' },
         { title: 'Access for everyone', text: 'Good guidance should not depend on who you know or where you live.' },
         { title: 'A trusted benchmark', text: 'We hold ourselves to standards other advisers can be measured against.' },
       ],
     },
     mission: {
-      title: 'How We Keep Unlocking',
+      title: 'Our Drive',
       label: 'About Us',
-      metaTitle: 'How We Keep Unlocking — World-Class Migration Solutions',
+      metaTitle: 'Our Drive — World-Class Migration Solutions',
       metaDescription: 'Migrantly’s mission is to deliver world-class migration solutions for individuals, families and investors through expert guidance and ethical practice.',
       lead: 'To deliver world-class migration solutions for individuals, families and investors through expert guidance and ethical immigration practices.',
       paragraphs: [
         'Every client arrives with a different profile, budget and goal. Our mission is to turn that starting point into a realistic, well-prepared application.',
-        'We do this by assessing eligibility honestly, recommending only routes that fit, and managing each application with care from first consultation to final decision.',
+        'We do this by assessing eligibility carefully, recommending only routes that fit, and managing each application with care from first consultation to final decision.',
       ],
       points: [
         { title: 'Expert guidance', text: 'Specialists who follow rule changes and explain what they mean for you.' },
@@ -51,9 +51,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     values: {
-      title: 'Our Ethics & Principles',
+      title: 'Our Code',
       label: 'About Us',
-      metaTitle: "Migrantly's Ethics & Principles — Integrity, Transparency, Excellence",
+      metaTitle: 'Our Code — Integrity, Transparency, Excellence',
       metaDescription: 'Integrity, transparency and excellence guide every Migrantly case. Learn the values behind how we treat clients and handle applications.',
       lead: 'Integrity, transparency and excellence in every case: treating every client’s future with the care it deserves.',
       paragraphs: [
@@ -70,9 +70,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
   },
   ar: {
     vision: {
-      title: 'ما فتحناه',
+      title: 'معتقدنا',
       label: 'من نحن',
-      metaTitle: 'ما فتحناه — هجرة واضحة ومتاحة للجميع',
+      metaTitle: 'معتقدنا — هجرة واضحة ومتاحة للجميع',
       metaDescription: 'رؤية ميجرانتلي أن تكون الهجرة واضحة ومتاحة للجميع، وأن نكون معياراً للثقة والالتزام ونجاح العملاء.',
       lead: 'أن نجعل الهجرة واضحة ومتاحة للجميع من خلال أن نكون معياراً للثقة والالتزام ونجاح العملاء.',
       paragraphs: [
@@ -86,9 +86,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     mission: {
-      title: 'كيف نواصل الفتح',
+      title: 'دافعنا',
       label: 'من نحن',
-      metaTitle: 'كيف نواصل الفتح — حلول هجرة عالمية المستوى',
+      metaTitle: 'دافعنا — حلول هجرة عالمية المستوى',
       metaDescription: 'مهمة ميجرانتلي تقديم حلول هجرة عالمية المستوى للأفراد والأسر والمستثمرين من خلال إرشاد الخبراء وممارسات أخلاقية.',
       lead: 'تقديم حلول هجرة عالمية المستوى للأفراد والأسر والمستثمرين من خلال إرشاد الخبراء وممارسات هجرة أخلاقية.',
       paragraphs: [
@@ -102,9 +102,9 @@ const copy: Record<Locale, Record<Pillar, PillarCopy>> = {
       ],
     },
     values: {
-      title: 'أخلاقيات ومبادئ ميجرانتلي',
+      title: 'ميثاقنا',
       label: 'من نحن',
-      metaTitle: 'أخلاقيات ومبادئ ميجرانتلي — النزاهة والشفافية والتميز',
+      metaTitle: 'ميثاقنا — النزاهة والشفافية والتميز',
       metaDescription: 'النزاهة والشفافية والتميز توجّه كل قضية في ميجرانتلي. تعرّف على القيم التي تحكم تعاملنا مع العملاء.',
       lead: 'النزاهة والشفافية والتميز في كل قضية: نعامل مستقبل كل عميل بالعناية التي يستحقها.',
       paragraphs: [

@@ -4,17 +4,15 @@ import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import BookingModal from './BookingModal';
 import { usePathname } from 'next/navigation';
-import { localeCopy, localizedPath, type Locale } from '@/lib/site-config';
+import { DEMO_PHONE as DEMO_CALL_NUMBER, localeCopy, localizedPath, type Locale } from '@/lib/site-config';
 import { services, countries } from '@/lib/data';
 import { toolLinks } from '@/lib/tools/registry';
 import { servicePages } from '@/lib/service-pages';
 import { services as servicesAr, countries as countriesAr } from '@/lib/data-ar';
 
-// Demo number until the real line is added to siteConfig.publicContact.phone
-const DEMO_CALL_NUMBER = '+971 50 000 0000';
 
 const ctaCopy = {
-  en: { book: 'Book Consultation', call: 'Connect in 2 mins' },
+  en: { book: 'Book Consultation', call: 'Connect in 2 Minutes' },
   ar: { book: 'احجز استشارة', call: 'تواصل خلال دقيقتين' },
 } as const;
 
@@ -67,9 +65,9 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
     {
       key: 'about', href: '/about', label: t.about,
       children: [
-        { href: '/about/vision', label: lang === 'ar' ? 'ما فتحناه' : 'What We Unlocked' },
-        { href: '/about/mission', label: lang === 'ar' ? 'كيف نواصل الفتح' : 'How We Keep Unlocking' },
-        { href: '/about/values', label: lang === 'ar' ? 'أخلاقيات ومبادئ ميجرانتلي' : 'Our Ethics & Principles' },
+        { href: '/about/vision', label: lang === 'ar' ? 'معتقدنا' : 'Our Belief' },
+        { href: '/about/mission', label: lang === 'ar' ? 'دافعنا' : 'Our Drive' },
+        { href: '/about/values', label: lang === 'ar' ? 'ميثاقنا' : 'Our Code' },
       ],
     },
   ];
@@ -134,8 +132,7 @@ export default function NavBar({ lang = 'en' }: { lang?: Locale }) {
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
         </span>
         <span className="nav-bar__call-text">
-          <small>{cta.call}</small>
-          <strong dir="ltr">{DEMO_CALL_NUMBER}</strong>
+          <strong>{cta.call}</strong>
         </span>
       </a>
       <button type="button" className="nav-bar__book" onClick={() => setBookingOpen(true)}>

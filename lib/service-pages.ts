@@ -30,7 +30,7 @@ const IMG = {
 
 const standardSteps = (first: string, last: string) => [
   { title: 'Free consultation', text: first },
-  { title: 'Eligibility review', text: 'We compare your profile with the current requirements and tell you honestly which routes are realistic.' },
+  { title: 'Eligibility review', text: 'We compare your profile with the current requirements and tell you plainly which routes are realistic.' },
   { title: 'Application preparation', text: 'We organise your documents, check them for gaps and prepare the application for submission.' },
   { title: 'Submission and follow-up', text: last },
 ];
@@ -41,7 +41,7 @@ export const servicePages: ServicePage[] = [
     title: 'Permanent Residence',
     tagline: 'Build your future with the right to stay',
     metaTitle: 'Permanent Residence Visa Consultants — PR Pathways',
-    metaDescription: 'Explore permanent residence pathways for Canada, Australia, the UK and more. Get an honest eligibility review and step-by-step application support from Migrantly.',
+    metaDescription: 'Explore permanent residence pathways for Canada, Australia, the UK and more. Get a clear eligibility review and step-by-step application support from Migrantly.',
     keywords: ['permanent residence', 'PR visa', 'permanent residency consultants', 'Canada PR', 'Australia PR'],
     description: 'Permanent residence gives you the right to live, work and study long term in a new country. We help you choose the pathway that fits your profile and prepare a strong application.',
     image: IMG.canada,

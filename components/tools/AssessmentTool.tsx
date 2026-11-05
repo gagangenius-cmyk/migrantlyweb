@@ -65,7 +65,7 @@ export default function AssessmentTool() {
       {selected && activeProgram && !getTool(activeProgram) && (
         <div className="assess__expert">
           <h3>{selected.programs.find((p) => p.slug === activeProgram)?.label}</h3>
-          <p>We don&apos;t have an online score for this pathway yet. Its rules are specific to the province, so our team checks your profile against the current grid and tells you honestly where you stand.</p>
+          <p>We don&apos;t have an online score for this pathway yet. Its rules are specific to the province, so our team checks your profile against the current grid and tells you plainly where you stand.</p>
           <div className="assess__expert-actions">
             <a className="btn btn-dark" href="#consultation">Request a free assessment</a>
           </div>

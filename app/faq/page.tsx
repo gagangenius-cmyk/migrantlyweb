@@ -22,7 +22,7 @@ export default function FaqPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structured).replace(/</g, '\\u003c') }} />
-      <PageHero label="Help" title="Frequently Asked Questions" description="Search by topic, for example “Canada Skilled”, or pick a category." breadcrumb={[{ label: 'Home', href: '/' }, { label: 'FAQ’s' }]} />
+      <PageHero label="Help" title="Frequently Asked Questions" description="Search by topic, for example “Canada Skilled”, or pick a category." breadcrumb={[{ label: 'Home', href: '/' }, { label: 'FAQs' }]} />
       <section className="page-content">
         <div className="container"><FaqSearch /></div>
       </section>

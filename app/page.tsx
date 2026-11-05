@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { ArrowIcon } from '@/components/Icons';
+import HeroSearch from '@/components/HeroSearch';
 import HeroSlides from '@/components/HeroSlides';
 import HeroHeadline from '@/components/HeroHeadline';
 import PopularVisa from '@/components/PopularVisa';
@@ -45,9 +46,7 @@ const news = [
 ];
 
 export default function Home() {
-  const [heroMode, setHeroMode] = useState<'skilled' | 'investor' | 'tourist'>('skilled');
   const [activePathway, setActivePathway] = useState(pathways[0].id);
-  const [programFilters, setProgramFilters] = useState({ destination: '', type: '', investment: '' });
 
   const activePathwayData = pathways.find((p) => p.id === activePathway) || pathways[0];
 
@@ -64,83 +63,12 @@ export default function Home() {
               <HeroHeadline />
             </div>
 
-            <div className="home-hero-search--desktop">
-              <div className="home-hero-search__tabs" data-mode={heroMode}>
-                <button
-                  className={heroMode === 'skilled' ? 'active' : ''}
-                  onClick={() => setHeroMode('skilled')}
-                  type="button"
-                >
-                  Skilled Visa
-                </button>
-                <button
-                  className={heroMode === 'investor' ? 'active' : ''}
-                  onClick={() => setHeroMode('investor')}
-                  type="button"
-                >
-                  Business Visa
-                </button>
-                <button
-                  className={heroMode === 'tourist' ? 'active' : ''}
-                  onClick={() => setHeroMode('tourist')}
-                  type="button"
-                >
-                  Tourist Visa
-                </button>
-              </div>
-              <div className="home-hero-filter-form">
-                <div className="home-hero-filter">
-                  <select aria-label="Destination" className="home-hero-filter__select" value={programFilters.destination} onChange={(event) => setProgramFilters((current) => ({ ...current, destination: event.target.value }))}>
-                    <option value="" disabled>Destination</option>
-                    <option value="all">All Destinations</option><option value="canada">Canada</option><option value="australia">Australia</option><option value="united-kingdom">United Kingdom</option><option value="united-states">United States</option><option value="european-union">European Union</option><option value="portugal">Portugal</option>
-                  </select>
-                </div>
-                <div className="home-hero-filter">
-                  <select aria-label="Program type" className="home-hero-filter__select" value={programFilters.type} onChange={(event) => setProgramFilters((current) => ({ ...current, type: event.target.value }))}>
-                    {heroMode === 'tourist' ? (<><option value="" disabled>Visa Type</option><option value="tourist-single">Tourist visa, single entry</option><option value="tourist-multiple">Tourist visa, multiple entry</option><option value="schengen">Schengen visa</option><option value="visit-family">Family or friends visit</option><option value="transit">Transit visa</option><option value="e-visa">E-visa</option></>) : (<><option value="" disabled>Program Type</option><option value="all">All Programs</option><option value="skilled-worker">Skilled Worker</option><option value="business-investor">Business & Investor</option><option value="study-visa">Study Visa</option><option value="citizenship">Citizenship</option></>)}
-                  </select>
-                </div>
-                <div className="home-hero-filter">
-                  <select aria-label="Investment range" className="home-hero-filter__select" value={programFilters.investment} onChange={(event) => setProgramFilters((current) => ({ ...current, investment: event.target.value }))}>
-                    {heroMode === 'tourist' ? (<><option value="" disabled>Stay Duration</option><option value="up-to-15">Up to 15 days</option><option value="up-to-30">Up to 30 days</option><option value="up-to-90">Up to 90 days</option><option value="over-90">Over 90 days</option></>) : (<><option value="" disabled>Investment Range</option><option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option></>)}
-                  </select>
-                </div>
-                <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/free-assessment?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">
-                  Search Programs
-                  <ArrowIcon />
-                </Link>
-              </div>
-            </div>
+            <HeroSearch />
           </div>
         </div>
 
         <div className="home-hero__mobile">
-          <div className="home-hero-search--desktop">
-            <div className="home-hero-search__tabs" data-mode={heroMode}>
-              <button className={heroMode === 'skilled' ? 'active' : ''} onClick={() => setHeroMode('skilled')} type="button">Skilled</button>
-              <button className={heroMode === 'investor' ? 'active' : ''} onClick={() => setHeroMode('investor')} type="button">Business</button>
-              <button className={heroMode === 'tourist' ? 'active' : ''} onClick={() => setHeroMode('tourist')} type="button">Tourist</button>
-            </div>
-            <div className="home-hero-filter-form">
-              <div className="home-hero-filter">
-                <select aria-label="Destination" className="home-hero-filter__select" value={programFilters.destination} onChange={(event) => setProgramFilters((current) => ({ ...current, destination: event.target.value }))}>
-                  <option value="" disabled>Destination</option>
-                  <option value="all">All Destinations</option><option value="canada">Canada</option><option value="australia">Australia</option><option value="united-kingdom">United Kingdom</option><option value="united-states">United States</option><option value="european-union">European Union</option>
-                </select>
-              </div>
-              <div className="home-hero-filter">
-                <select aria-label="Program type" className="home-hero-filter__select" value={programFilters.type} onChange={(event) => setProgramFilters((current) => ({ ...current, type: event.target.value }))}>
-                  {heroMode === 'tourist' ? (<><option value="" disabled>Visa Type</option><option value="tourist-single">Tourist visa, single entry</option><option value="tourist-multiple">Tourist visa, multiple entry</option><option value="schengen">Schengen visa</option><option value="visit-family">Family or friends visit</option><option value="transit">Transit visa</option><option value="e-visa">E-visa</option></>) : (<><option value="" disabled>Program</option><option value="all">All Programs</option><option value="skilled-worker">Skilled Worker</option><option value="business-investor">Business & Investor</option><option value="study-visa">Study Visa</option></>)}
-                </select>
-              </div>
-              <div className="home-hero-filter">
-                <select aria-label="Investment range" className="home-hero-filter__select" value={programFilters.investment} onChange={(event) => setProgramFilters((current) => ({ ...current, investment: event.target.value }))}>
-                  {heroMode === 'tourist' ? (<><option value="" disabled>Stay Duration</option><option value="up-to-15">Up to 15 days</option><option value="up-to-30">Up to 30 days</option><option value="up-to-90">Up to 90 days</option><option value="over-90">Over 90 days</option></>) : (<><option value="" disabled>Investment</option><option value="any">Any Range</option><option value="under-50000">Under 50,000</option><option value="50000-250000">50,000 – 250,000</option><option value="over-250000">Over 250,000</option></>)}
-                </select>
-              </div>
-              <Link href={heroMode === 'tourist' ? '/services/global-tourist-visa' : `/free-assessment?${new URLSearchParams({ mode: heroMode, ...Object.fromEntries(Object.entries(programFilters).filter(([, value]) => value)) }).toString()}`} className="home-hero-search-button">Search<ArrowIcon /></Link>
-            </div>
-          </div>
+          <HeroSearch />
         </div>
       </section>
 

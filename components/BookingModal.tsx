@@ -10,7 +10,7 @@ const copy = {
     eyebrow: 'Free consultation',
     heading: 'Book your consultation with a migration expert',
     intro: 'Tell us a little about your plans and we will get back to you with clear next steps.',
-    points: ['Eligibility review for your profile', 'Honest guidance on the best visa route', 'Clear timelines, costs and documents', 'No obligation, no pressure'],
+    points: ['Eligibility review for your profile', 'Clear guidance on the best visa route', 'Clear timelines, costs and documents', 'No obligation, no pressure'],
     reply: 'We usually reply within 24 hours.',
     title: 'Request a call back',
     name: 'Full name',

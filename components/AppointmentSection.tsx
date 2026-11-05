@@ -15,7 +15,7 @@ const copy = {
     destinations: ['Canada', 'Australia', 'UK', 'USA', 'New Zealand', 'Germany', 'Europe', 'Caribbean Islands', 'Other'],
     promise: 'What you can expect', messagePrefix: 'Appointment request. Destination:',
     commitments: [
-      { t: 'A clear answer first', d: 'We tell you honestly which routes are realistic for your profile before you spend anything.' },
+      { t: 'A clear answer first', d: 'We tell you plainly which routes are realistic for your profile before you spend anything.' },
       { t: 'No pressure, no guarantees', d: 'We never promise outcomes no adviser can guarantee, and we explain the risks as well as the options.' },
       { t: 'One team, start to finish', d: 'The people who assess your eligibility stay with you through the application and after approval.' },
     ],

@@ -7,7 +7,7 @@ import { MenuIcon, CloseIcon } from './Icons';
 import NavBar from './NavBar';
 import ThemeToggle from './ThemeToggle';
 import SocialLinks from './SocialLinks';
-import { alternateLocalePath, localeCopy, localizedPath, siteConfig, type Locale } from '@/lib/site-config';
+import { DEMO_PHONE, alternateLocalePath, localeCopy, localizedPath, siteConfig, type Locale } from '@/lib/site-config';
 
 export default function Header({ lang = 'en' }: { lang?: Locale }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -92,14 +92,17 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
         <div className={`site-header${stuck ? ' is-stuck' : ''}`}>
           <Link href={localizedPath(lang, '/')} className="site-header__logo" aria-label={`${t.home} — Migrantly`}>
             <span className="logo-pair">
-              <img className="logo-img logo-img--light" src="/assets/logo-light-330.png" srcSet="/assets/logo-light-220.png 220w, /assets/logo-light-330.png 330w, /assets/logo-light-440.png 440w, /assets/logo-light-660.png 660w" sizes="170px" alt="Migrantly" width={330} height={167} decoding="async" />
-              <img className="logo-img logo-img--dark" src="/assets/logo-dark-330.png" srcSet="/assets/logo-dark-220.png 220w, /assets/logo-dark-330.png 330w, /assets/logo-dark-440.png 440w, /assets/logo-dark-660.png 660w" sizes="170px" alt="" aria-hidden="true" width={330} height={165} decoding="async" />
+              <img className="logo-img logo-img--light" src="/assets/logo-light-660.png" srcSet="/assets/logo-light-330.png 330w, /assets/logo-light-660.png 660w, /assets/logo-light-880.png 880w," sizes="300px" alt="Migrantly" width={330} height={167} decoding="async" />
+              <img className="logo-img logo-img--dark" src="/assets/logo-dark-660.png" srcSet="/assets/logo-dark-330.png 330w, /assets/logo-dark-660.png 660w, /assets/logo-dark-880.png 880w," sizes="300px" alt="" aria-hidden="true" width={330} height={165} decoding="async" />
             </span>
           </Link>
           <div className="site-header__body">
             <div className="site-header__top">
               <div className="site-header__info">
-                <Link href="/free-assessment" className="site-header__assess">{lang === 'ar' ? 'تقييم مجاني' : 'Free Assessment'}</Link>
+                <a href={`tel:${DEMO_PHONE.replace(/\s/g, '')}`} className="site-header__phone">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" /></svg>
+                  <span dir="ltr">{DEMO_PHONE}</span>
+                </a>
                 {siteConfig.publicContact.email && (
                   <a href={`mailto:${siteConfig.publicContact.email}`}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
@@ -111,15 +114,12 @@ export default function Header({ lang = 'en' }: { lang?: Locale }) {
                 <div className="site-header__links">
                   <Link href={localizedPath(lang, '/contact')}>{t.contact}</Link>
                   <Link href={localizedPath(lang, '/news')}>{t.news}</Link>
-                  <Link href="/faq">{lang === 'ar' ? 'الأسئلة الشائعة' : "FAQ's"}</Link>
+                  <Link href="/faq">{lang === 'ar' ? 'الأسئلة الشائعة' : 'FAQs'}</Link>
                 </div>
-                <div className="flag-switch" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
-                  <span className={lang === 'en' ? 'is-on' : undefined} lang="en">EN</span>
-                  <a href={alternateLocalePath(pathname, lang === 'ar' ? 'en' : 'ar')} hrefLang={lang === 'ar' ? 'en' : 'ar'} className={`flag-switch__track is-${lang}`} aria-label={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'} title={lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'}>
-                    <span className="flag-switch__flag">{lang === 'ar' ? (<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="10" fill="#00732F" /><rect y="10" width="60" height="10" fill="#fff" /><rect y="20" width="60" height="10" fill="#000" /><rect width="16" height="30" fill="#FF0000" /></svg>) : (<svg viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="60" height="30" fill="#012169" /><path d="M0 0L60 30M60 0L0 30" stroke="#fff" strokeWidth="6" /><path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" strokeWidth="2.5" /><path d="M30 0V30M0 15H60" stroke="#fff" strokeWidth="10" /><path d="M30 0V30M0 15H60" stroke="#C8102E" strokeWidth="6" /></svg>)}</span>
-                    <i className="flag-switch__knob" />
-                  </a>
-                  <span className={lang === 'ar' ? 'is-on' : undefined} lang="ar">AR</span>
+                <div className="lang-text" role="group" aria-label={lang === 'ar' ? 'اختر اللغة' : 'Choose language'}>
+                  {lang === 'en' ? <span className="is-on" lang="en" aria-current="true">EN</span> : <a href={alternateLocalePath(pathname, 'en')} hrefLang="en" lang="en">EN</a>}
+                  <span className="lang-text__sep" aria-hidden="true">|</span>
+                  {lang === 'ar' ? <span className="is-on" lang="ar" aria-current="true">AR</span> : <a href={alternateLocalePath(pathname, 'ar')} hrefLang="ar" lang="ar">AR</a>}
                 </div>
                 <ThemeToggle lang={lang} />
               </div>

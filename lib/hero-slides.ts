@@ -19,7 +19,7 @@ export const heroSlides: HeroSlide[] = [
   {
     src: '/assets/images/1521791136064-7986c2920216.webp', alt: 'Handshake after a consultation',
     title: { en: 'Immigration & Visa Consultant', ar: 'مستشار الهجرة والتأشيرات' },
-    line: { en: 'Clear, honest guidance from your first consultation to approval.', ar: 'إرشاد واضح وصادق من استشارتك الأولى حتى الموافقة.' },
+    line: { en: 'Clear, practical guidance from your first consultation to approval.', ar: 'إرشاد واضح وصادق من استشارتك الأولى حتى الموافقة.' },
   },
   {
     src: '/assets/countries/australia.webp', alt: 'Sydney Opera House and Harbour Bridge',

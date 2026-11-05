@@ -10,7 +10,7 @@ export const metadata = { title, description, alternates: { canonical: '/careers
 const reasons = [
   { t: 'Work that matters', d: 'Every file is someone’s future. You help families and professionals make a life-changing move.' },
   { t: 'Learn from specialists', d: 'Work alongside people who follow rule changes closely and explain them clearly.' },
-  { t: 'Honest, ethical practice', d: 'We never promise outcomes no adviser can guarantee, and we expect the same of every colleague.' },
+  { t: 'Straightforward, ethical practice', d: 'We never promise outcomes no adviser can guarantee, and we expect the same of every colleague.' },
   { t: 'A global, multilingual team', d: 'Serve clients across Canada, Australia, the UK, Europe and the Gulf in English and Arabic.' },
 ];
 
