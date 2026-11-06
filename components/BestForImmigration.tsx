@@ -107,7 +107,7 @@ export default function BestForImmigration({ lang = 'en' }: { lang?: Locale }) {
           {places.map((place) => {
             return (
             <article className="arch" key={place.slug}>
-              <div className="arch__stone">
+              <div className="arch__stone" tabIndex={0} role="group" aria-label={place[lang]}>
                 <div className="arch__frame" style={{ clipPath: 'url(#arch-clip)' }}>
                   <Image src={place.image} alt="" fill sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 22vw" className="arch__img" />
                   <div className="arch__panel">
