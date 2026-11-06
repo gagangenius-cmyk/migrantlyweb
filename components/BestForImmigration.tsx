@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { localizedPath, type Locale } from '@/lib/site-config';
@@ -27,16 +26,53 @@ const places = [
   { slug: 'caribbean', en: 'Caribbean Islands', ar: 'جزر الكاريبي', code: 'CB', note: { en: 'Citizenship by Investment', ar: 'الجنسية بالاستثمار' }, image: '/assets/countries/caribbean.webp', href: '/services/citizenship-by-investment', opts: ['cbi', 'invest', 'business', 'visit', 'family'] },
 ] as const;
 
-// Six white doorway designs. Both paths are drawn in a 300 x 360 box: `outer` is the stone,
-// `inner` is the opening the photo shows through.
-const doors = [
-  { id: 'round', name: 'Classic round', pt: 96, px: 40, outer: 'M0 360V150A150 150 0 0 1 300 150V360Z', inner: 'M40 360V150A110 110 0 0 1 260 150V360Z' },
-  { id: 'gothic', name: 'Gothic pointed', pt: 112, px: 40, outer: 'M0 360V190Q0 80 150 4Q300 80 300 190V360Z', inner: 'M40 360V190Q40 120 150 62Q260 120 260 190V360Z' },
-  { id: 'soft', name: 'Soft rounded', pt: 70, px: 40, outer: 'M0 360V70Q0 10 60 10H240Q300 10 300 70V360Z', inner: 'M40 360V90Q40 50 80 50H220Q260 50 260 90V360Z' },
-  { id: 'horseshoe', name: 'Horseshoe', pt: 104, px: 62, outer: 'M12 360V232A144 144 0 1 1 288 232V360Z', inner: 'M62 360V232A98 98 0 1 1 238 232V360Z' },
-  { id: 'segment', name: 'Segmental', pt: 190, px: 40, outer: 'M0 360V160A280 280 0 0 1 300 160V360Z', inner: 'M40 360V200A240 240 0 0 1 260 200V360Z' },
-  { id: 'ogee', name: 'Ogee', pt: 118, px: 52, outer: 'M0 360V200C0 110 90 90 150 6C210 90 300 110 300 200V360Z', inner: 'M40 360V200C40 140 110 120 150 50C190 120 260 140 260 200V360Z' },
-] as const;
+// Carved white stone gateway (round arch, voussoirs + keystone, imposts, block pillars, plinths).
+// Drawn in image-pixel units: viewBox 140 100 1055 1205, arch centre (670, 590).
+const CX = 670;
+const CY = 590;
+const pt = (r: number, deg: number) => {
+  const a = (deg * Math.PI) / 180;
+  return `${(CX + r * Math.sin(a)).toFixed(1)} ${(CY - r * Math.cos(a)).toFixed(1)}`;
+};
+const radial = (r1: number, r2: number, deg: number) => `M${pt(r1, deg)}L${pt(r2, deg)}`;
+const joints = (r1: number, r2: number, list: number[]) => list.flatMap((d) => [radial(r1, r2, d), radial(r1, r2, -d)]).join('');
+
+const OPENING = 'M325 1305V590A345 345 0 0 1 1015 590V1305Z';
+const RING = 'M178 590A492 492 0 0 1 1162 590H1015A345 345 0 0 0 325 590Z';
+const KEYSTONE = `M${pt(372, -7.5)}L${pt(508, -7.5)}A508 508 0 0 1 ${pt(508, 7.5)}L${pt(372, 7.5)}A372 372 0 0 0 ${pt(372, -7.5)}Z`;
+const OUTER_JOINTS = joints(395, 492, [24, 46, 67, 84]);
+const INNER_JOINTS = joints(345, 395, [14, 36, 57, 78]);
+const SOFFIT = `M${pt(395, -90)}A395 395 0 0 1 ${pt(395, 90)}`;
+
+// Left-hand pieces; the right-hand side is the mirror image about x = 670.
+const side = (
+  <>
+    <rect x="186" y="655" width="139" height="515" rx="4" />
+    <rect x="201" y="668" width="109" height="490" rx="3" className="stone-inset" />
+    <path d="M186 810H325M186 990H325" className="stone-joint" />
+    <path d="M145 588H340V614H158Z" />
+    <path d="M158 614H340V652H170Z" />
+    <path d="M145 1165H340V1300H145Z" />
+    <path d="M145 1165H340M158 1182H340" className="stone-joint" />
+  </>
+);
+
+function Gateway() {
+  return (
+    <svg className="arch__door" viewBox="140 100 1055 1205" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <g className="stone" fill="url(#arch-stone-fill)">
+        <path d={RING} />
+        <path d={KEYSTONE} />
+        {side}
+        <g transform="translate(1340 0) scale(-1 1)">{side}</g>
+      </g>
+      <g className="stone-joint" fill="none">
+        <path d={OUTER_JOINTS + INNER_JOINTS} />
+        <path d={SOFFIT} />
+      </g>
+    </svg>
+  );
+}
 
 function ArchDefs() {
   return (
@@ -44,13 +80,11 @@ function ArchDefs() {
       <defs>
         <linearGradient id="arch-stone-fill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#ffffff" />
-          <stop offset="1" stopColor="#eef1f5" />
+          <stop offset="1" stopColor="#e9ecf0" />
         </linearGradient>
-        {doors.map((door) => (
-          <clipPath key={door.id} id={`arch-clip-${door.id}`} clipPathUnits="objectBoundingBox">
-            <path d={door.inner} transform="scale(0.003333 0.002778)" />
-          </clipPath>
-        ))}
+        <clipPath id="arch-clip" clipPathUnits="objectBoundingBox">
+          <path d={OPENING} transform="translate(-0.1327 -0.083) scale(0.000948 0.00083)" />
+        </clipPath>
       </defs>
     </svg>
   );
@@ -70,12 +104,11 @@ export default function BestForImmigration({ lang = 'en' }: { lang?: Locale }) {
         <h2 className="section-title">{t.title}</h2>
         <ArchDefs />
         <div className="arches__grid">
-          {places.map((place, index) => {
-            const door = doors[index % doors.length];
+          {places.map((place) => {
             return (
             <article className="arch" key={place.slug}>
-              <div className={`arch__stone arch__stone--${door.id}`} style={{ '--pt': `${door.pt / 3}%`, '--px': `${door.px / 3}%` } as CSSProperties}>
-                <div className="arch__frame" style={{ clipPath: `url(#arch-clip-${door.id})` }}>
+              <div className="arch__stone">
+                <div className="arch__frame" style={{ clipPath: 'url(#arch-clip)' }}>
                   <Image src={place.image} alt="" fill sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 22vw" className="arch__img" />
                   <div className="arch__panel">
                     <p className="arch__panel-title">{place[lang]}</p>
@@ -86,10 +119,7 @@ export default function BestForImmigration({ lang = 'en' }: { lang?: Locale }) {
                     </ul>
                   </div>
                 </div>
-                <svg className="arch__door" viewBox="0 0 300 360" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-                  <path d={`${door.outer}${door.inner}`} fillRule="evenodd" fill="url(#arch-stone-fill)" stroke="#c9d0da" strokeWidth="1.5" />
-                  <path d={door.inner} fill="none" stroke="#d3d9e2" strokeWidth="3" />
-                </svg>
+                <Gateway />
               </div>
               <Link href={place.href.startsWith('/countries') ? localizedPath(lang, place.href) : place.href} className="arch__caption">
                 <strong>{place[lang]}</strong>

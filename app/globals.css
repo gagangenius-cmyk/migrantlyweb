@@ -4160,7 +4160,6 @@ h1, h2, h3, h4, h5, h6 { color: var(--heading); }
 .arch__caption strong { font-size: 20px; font-weight: 700; color: var(--heading); text-transform: uppercase; letter-spacing: 0.02em; }
 .arch__caption small { color: var(--muted); font-size: 13px; }
 [dir="rtl"] .arch__no, [dir="rtl"] .arch__caption strong { letter-spacing: 0; }
-@media (hover: none) { .arch__panel { opacity: 1; transform: none; } .arch__img { filter: blur(5px) brightness(0.75); } .arch__frame::after { opacity: 1; } }
 @media (max-width: 1000px) { .arches__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .arches__grid { grid-template-columns: 1fr; } }
 
@@ -4409,3 +4408,22 @@ h1, h2, h3, h4, h5, h6 { color: var(--heading); }
 }
 @media (min-width: 1025px) and (max-width: 1439px) { .site-header__logo, .site-header.is-stuck .site-header__logo { width: 250px; padding: 8px 20px; } }
 .logo-img { image-rendering: auto; -webkit-font-smoothing: antialiased; }
+
+/* Carved stone gateway (matches the reference image) */
+.arch__stone { aspect-ratio: 1055 / 1205; width: min(100%, 340px); }
+.arch__door .stone { stroke: #c3cad3; stroke-width: 3.5; stroke-linejoin: round; }
+.arch__door .stone-inset { fill: rgba(205, 212, 221, 0.28); stroke: #d2d8df; stroke-width: 2.5; }
+.arch__door .stone-joint { stroke: #bcc4ce; stroke-width: 3.5; stroke-linecap: round; }
+.arch__stone .arch__panel { padding: 30% 20% 7%; }
+.arch__stone .arch__panel a { padding: 6px 10px; font-size: 12.5px; }
+.arch__stone .arch__panel-title { font-size: 19px; }
+
+/* Gateway polish: keep the hover menu inside the opening, clearer title, softer stone shading */
+.arch__stone .arch__panel { padding: 31% 23% 10%; }
+.arch__stone .arch__panel ul { gap: 5px; }
+.arch__stone .arch__panel a { padding: 5px 8px; font-size: 12px; border-radius: 8px; line-height: 1.25; }
+.arch__stone .arch__panel-title { font-size: 20px; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; color: #ff8a6b; margin-bottom: 8px; }
+.arch__stone .arch__frame::after { background: linear-gradient(to bottom, rgba(var(--logo-navy-rgb), 0.55), rgba(var(--logo-navy-rgb), 0.9)); }
+.arch__door .stone { filter: drop-shadow(0 2px 2px rgba(120, 132, 148, 0.25)); }
+.arch__stone { transition: transform 0.4s ease, filter 0.4s ease; }
+.arch:hover .arch__stone, .arch:focus-within .arch__stone { filter: drop-shadow(0 20px 28px rgba(var(--logo-navy-rgb), 0.3)); }
